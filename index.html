@@ -5,9 +5,44 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ghufran Afzal</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<script src="js/main.js" defer></script>
 	<link rel="icon" href="images/icons/shopify-icon.svg" type="image/svg+xml">
 </head>
 <body>
+	<!-- Header -->
+	<header class="header">
+		<div class="container">
+			<div class="header_wrapper">
+				<a href="#home" class="header_logo">
+					<img src="./images/Logo.png" alt="logo">
+				</a>
+
+				<!-- Hamburger / Close Icon Toggle -->
+				<div class="header_hamburger" id="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+					<!-- Hamburger Icon -->
+					<svg class="icon icon-hamburger" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+
+					<!-- Close Icon -->
+					<svg class="icon icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</div>
+
+				<!-- Navigation Menu -->
+				<nav class="header_nav" id="navLinks">
+					<ul class="header_nav-list">
+						<li class="header_nav-item"><a href="#home" class="header_nav-link">Home</a></li>
+						<li class="header_nav-item"><a href="#about" class="header_nav-link">About me</a></li>
+						<li class="header_nav-item"><a href="#services" class="header_nav-link">Services</a></li>
+						<li class="header_nav-item"><a href="#portfolio" class="header_nav-link">Portfolio</a></li>
+						<li class="header_nav-item"><a href="#contact" class="header_nav-link">Contact me</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
 	<!-- Hero Section -->
 	<section class="hero-section" id="home">
 		<div class="container">
