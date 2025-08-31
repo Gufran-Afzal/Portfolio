@@ -214,19 +214,23 @@
 
   /* ========== CONTACT SECTION ========== */
 
-  .contact-wrapper {
+  .contact-section {
     background-color: var(--section-background-color); 
     color: var(--section-text-color); 
+  }
+
+  .contact-section_wrapper {
     padding: 2rem 3rem;
   }
 
   .contact-section_grid {
     display: flex;
-    gap: 80px;
+    flex-direction: column;
+    gap: 40px;
   }
 
   .contact-info {
-    max-width: 300px;
+    max-width: 100%;
   }
 
   .contact-header {
@@ -387,4 +391,15 @@
   .contact-info_social-icons a:hover polygon {
     fill: var(--section-primary-bg);
     transition: fill 300ms;
+  }
+
+  @media (min-width: 768px) {
+    .contact-section_grid {
+      flex-direction: row;
+      gap: 80px;
+    }
+
+    .contact-info {
+      max-width: 300px;
+    }
   }
