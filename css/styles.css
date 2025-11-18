@@ -561,7 +561,7 @@
 
     .services-section_block{
       flex-basis: 100%;
-      padding: 15px;
+      padding: 0;
     }
 
     .services-section_block-description{
@@ -589,6 +589,10 @@
     @media (min-width: 768px) {
       .services-section{
         padding: 50px 0;
+      }
+
+      .services-section_block{
+        padding: 15px;
       }
 
       .services-section_grid{
