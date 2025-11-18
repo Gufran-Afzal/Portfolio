@@ -235,7 +235,7 @@
     color: var(--section-text-color);
     width: 100%;
     min-height: 675px;
-    padding-bottom: 20px 0;
+    padding-bottom: 20px;
   }
   
   .hero-section_wrapper {
