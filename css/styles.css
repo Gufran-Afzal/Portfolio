@@ -606,6 +606,117 @@
       }
     }
 
+  /* ========== PORTFOLIO SECTION ========== */
+
+  .portfolio-section {
+    background-color: var(--section-background-color); 
+    color: var(--section-text-color);
+  }
+
+  .portfolio-section_wrapper {
+    padding: 2rem 3rem;
+  }
+
+  .portfolio-section_grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .portfolio-section_col {
+    flex-basis: calc(33.33% - 40px);
+  }
+
+  .portfolio-header {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .portfolio-header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .portfolio-header .underline {
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--section-label-color); 
+    margin: 0 auto 15px auto;
+    border-radius: 2px;
+  }
+
+  .portfolio-header p {
+    margin-top: 12px;
+  }
+
+  .portfolio-section_grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .portfolio-section_item-img img{
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio-section_item-title{
+    margin-top: 20px;
+    border-bottom: 1px solid var(--section-label-color);
+    padding-bottom: 12px;
+  }
+
+  .portfolio-section_item-description{
+    margin-top: 12px;
+  }
+
+  .portfolio-section_item-link{
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding-bottom: 4px;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .portfolio-section_item-link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--section-label-color);
+    transition: width 0.3s ease;
+  }
+
+  .portfolio-section_item-link:hover::after{
+    width: 100%;
+  }
+
+  .portfolio-section_item-link svg{
+    width: 24px;
+    height: 24px;
+    transition: transform 300ms ease-in-out;
+  }
+
+  .portfolio-section_item-link:hover{
+    color: var(--section-label-color);
+  }
+
+  .portfolio-section_item-link:hover svg{
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-section_grid{
+      flex-direction: row;
+    }
+  }
+
   /* ========== CONTACT SECTION ========== */
 
   .contact-section {
