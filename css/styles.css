@@ -550,9 +550,9 @@
       margin-top: 50px;
     }
 
-    .services-section_col{
+    /* .services-section_col{
       flex-basis: 50%;
-    }
+    } */
 
     .services-section_blocks-wrapper{
       display: flex;
