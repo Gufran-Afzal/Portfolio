@@ -27,6 +27,7 @@ body {
   background: #ffffff;
   color: #000000;
   line-height: 1.6;
+  overflow-x: hidden; /* safety net: prevents horizontal scroll from any translateX leaking outside clipped areas */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,9 +88,13 @@ h5 { font-size: 16px; }
 .js-anim-char {
   display: inline-block;
   opacity: 0;
-  filter: blur(14px);
-  transform: translateY(0.35em);
-  transition: opacity 0.55s ease, filter 0.55s ease, transform 0.55s ease;
+  filter: blur(10px);
+  transform: translateY(0.28em);
+  /* smooth cubic-bezier gives a natural deceleration wave feel */
+  transition:
+    opacity  0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter   0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, filter, opacity;
 }
 .js-anim-char.is-visible {
@@ -101,19 +106,35 @@ h5 { font-size: 16px; }
 /* generic directional reveals — data-animate="fade-up|fade-left|fade-right|fade-in|scale-in" */
 [data-animate] {
   opacity: 0;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  /* smooth wave easing — elements decelerate gracefully into place */
+  transition:
+    opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-[data-animate="fade-up"]    { transform: translateY(16px); }
-[data-animate="fade-left"]  { transform: translateX(-28px); }
-[data-animate="fade-right"] { transform: translateX(28px); }
+
+/* Kept translateY-only for all directional types on mobile to prevent
+   any horizontal overflow from translateX. fade-right becomes a gentle
+   upward fade on narrow viewports (see media query below). */
+[data-animate="fade-up"]    { transform: translateY(22px); }
+[data-animate="fade-left"]  { transform: translateX(-24px); }
+[data-animate="fade-right"] { transform: translateX(24px); }
 [data-animate="fade-in"]    { transform: none; }
-[data-animate="scale-in"]   { transform: scale(0.94); }
-[data-animate="chars"]      { opacity: 1; } /* chars handle their own opacity per-character */
+[data-animate="scale-in"]   { transform: scale(0.95); }
+[data-animate="chars"]      { opacity: 1; transform: none; } /* chars handle their own opacity per-character */
 
 [data-animate].is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* On mobile, convert all horizontal slides to vertical fades to prevent
+   any chance of horizontal scrollbar / clipping glitches */
+@media (max-width: 900px) {
+  [data-animate="fade-left"],
+  [data-animate="fade-right"] {
+    transform: translateY(18px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

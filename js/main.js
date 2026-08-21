@@ -1,54 +1,13 @@
 /* ==================================================================
-   scroll-reveal.js — THE REUSABLE ENGINE (wave-stagger version)
-   Drop this file once in assets/js/. It reads a handful of
-   data-attributes and needs no per-section edits ever again:
- 
-   data-animate-group              → put on the outer wrapper of a
-                                      section. Everything inside with
-                                      data-animate runs as one wave
-                                      once the group scrolls into view.
-   data-animate-threshold="0.3"    → optional, how much of the group
-                                      must be visible to trigger (0–1)
-   data-animate-wave="90"          → optional, ms between each index
-                                      step (default 90). Lower = tighter
-                                      wave, higher = more staggered.
- 
-   data-animate="chars"            → splits text into characters and
-                                      reveals them with blur + slide,
-                                      staggered.
-   data-animate="fade-up|fade-left|fade-right|fade-in|scale-in"
-                                    → generic directional reveal.
- 
-   data-animate-index="2"          → optional. Overrides this element's
-                                      position in the wave. Elements with
-                                      the SAME index start at the exact
-                                      same time (e.g. give a heading and
-                                      a side image both index="0" so the
-                                      image slides in alongside the
-                                      heading instead of after it).
-                                      If omitted, elements get an index
-                                      automatically based on DOM order
-                                      (0, 1, 2, ...).
-   data-animate-delay="200"        → optional ms fine-tune, +/- allowed,
-                                      added on TOP of index * wave. Use
-                                      this for small nudges; use
-                                      data-animate-index for "this
-                                      should clearly happen at the same
-                                      beat as that other element".
- 
-   data-count-to="30"              → put directly on any element (or
-   data-suffix="+"                   nested inside a data-animate
-   data-count-duration="1200"        element) to linear-count it up.
-                                      Starts shortly after its parent's
-                                      own reveal fires — not after the
-                                      whole sequence before it finishes.
+   scroll-reveal.js — WAVE-STAGGER ENGINE  v2
+   Responsive-safe: thresholds auto-clamp so mobile never gets stuck.
    ================================================================== */
 (function () {
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DEFAULT_WAVE_STEP = 90;   // ms between each index step in the wave
+  var DEFAULT_WAVE_STEP = 80;   // ms between each index step — tighter = smoother wave
   var COUNTER_KICKOFF = 150;    // ms after an element reveals before its counter starts
-  var CHAR_STEP = 28;           // ms between each character starting
-  var CHAR_DURATION = 550;      // ms, matches .js-anim-char transition
+  var CHAR_STEP = 24;           // ms between each character starting (tighter = more fluid)
+  var CHAR_DURATION = 600;      // ms, matches .js-anim-char transition
  
   function splitChars(el) {
     // Walks the element's children instead of flattening textContent, so any
@@ -144,12 +103,28 @@
  
   var groups = document.querySelectorAll('[data-animate-group]');
   groups.forEach(function (group) {
-    var threshold = parseFloat(group.getAttribute('data-animate-threshold') || '0.3');
+    var rawThreshold = parseFloat(group.getAttribute('data-animate-threshold') || '0.3');
+
+    // Clamp threshold so it never exceeds what the viewport can actually show.
+    // If the section is taller than the viewport, a threshold of "1" would never
+    // fire on mobile — so we cap it at (viewportH / groupH) * 0.85.
+    function safeThreshold() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var groupH = group.getBoundingClientRect().height || vh;
+      var maxSafe = Math.min(1, (vh / groupH) * 0.85);
+      return Math.min(rawThreshold, maxSafe);
+    }
+
+    var threshold = safeThreshold();
+
+    // rootMargin "-10% 0px": animation triggers when the element has scrolled
+    // 10% of the viewport height into view — gives a slightly-ahead-of-time
+    // feel that makes the wave look more natural while scrolling.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { runGroup(group); io.disconnect(); }
       });
-    }, { threshold: threshold });
+    }, { threshold: threshold, rootMargin: '0px 0px -8% 0px' });
     io.observe(group);
   });
-})();
+})();
