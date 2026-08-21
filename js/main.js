@@ -1,242 +1,155 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('navLinks');
-  const links = document.querySelectorAll('.header_nav-link');
-
-  function toggleMenu() {
-    const isOpen = nav.classList.toggle('open');
-    hamburger.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  }
-
-  hamburger.addEventListener('click', toggleMenu);
-
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && nav.classList.contains('open')) {
-      nav.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-  });
-
-  // Portfolio Tab Filtering
-  const tabs = document.querySelectorAll('.portfolio-section-tab');
-  const cols = document.querySelectorAll('.portfolio-section_col');
-
-  if (tabs.length && cols.length) {
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        if (tab.classList.contains('active')) return;
-
-        // Update active tab class
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        const filterValue = tab.getAttribute('data-filter');
-
-        // Phase 1: Fade out visible elements
-        cols.forEach(col => {
-          if (!col.classList.contains('hidden')) {
-            col.classList.add('fade-out');
-          }
-        });
-
-        // Phase 2: Toggle hidden state and fade-in the filtered elements
-        setTimeout(() => {
-          cols.forEach(col => {
-            const matchesFilter = filterValue === 'all' || col.classList.contains(filterValue);
-
-            if (matchesFilter) {
-              col.classList.remove('hidden', 'fade-out');
-              // Trigger a reflow to reset the CSS keyframe animation
-              void col.offsetHeight;
-              col.classList.add('fade-in');
-            } else {
-              col.classList.add('hidden');
-              col.classList.remove('fade-out', 'fade-in');
-            }
+/* ==================================================================
+   scroll-reveal.js — THE REUSABLE ENGINE (wave-stagger version)
+   Drop this file once in assets/js/. It reads a handful of
+   data-attributes and needs no per-section edits ever again:
+ 
+   data-animate-group              → put on the outer wrapper of a
+                                      section. Everything inside with
+                                      data-animate runs as one wave
+                                      once the group scrolls into view.
+   data-animate-threshold="0.3"    → optional, how much of the group
+                                      must be visible to trigger (0–1)
+   data-animate-wave="90"          → optional, ms between each index
+                                      step (default 90). Lower = tighter
+                                      wave, higher = more staggered.
+ 
+   data-animate="chars"            → splits text into characters and
+                                      reveals them with blur + slide,
+                                      staggered.
+   data-animate="fade-up|fade-left|fade-right|fade-in|scale-in"
+                                    → generic directional reveal.
+ 
+   data-animate-index="2"          → optional. Overrides this element's
+                                      position in the wave. Elements with
+                                      the SAME index start at the exact
+                                      same time (e.g. give a heading and
+                                      a side image both index="0" so the
+                                      image slides in alongside the
+                                      heading instead of after it).
+                                      If omitted, elements get an index
+                                      automatically based on DOM order
+                                      (0, 1, 2, ...).
+   data-animate-delay="200"        → optional ms fine-tune, +/- allowed,
+                                      added on TOP of index * wave. Use
+                                      this for small nudges; use
+                                      data-animate-index for "this
+                                      should clearly happen at the same
+                                      beat as that other element".
+ 
+   data-count-to="30"              → put directly on any element (or
+   data-suffix="+"                   nested inside a data-animate
+   data-count-duration="1200"        element) to linear-count it up.
+                                      Starts shortly after its parent's
+                                      own reveal fires — not after the
+                                      whole sequence before it finishes.
+   ================================================================== */
+(function () {
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DEFAULT_WAVE_STEP = 90;   // ms between each index step in the wave
+  var COUNTER_KICKOFF = 150;    // ms after an element reveals before its counter starts
+  var CHAR_STEP = 28;           // ms between each character starting
+  var CHAR_DURATION = 550;      // ms, matches .js-anim-char transition
+ 
+  function splitChars(el) {
+    // Walks the element's children instead of flattening textContent, so any
+    // nested tags (e.g. a highlighted word in a heading line) survive intact
+    // — every text node at any depth gets wrapped in .js-anim-char spans,
+    // and the --i counter stays continuous across the whole line.
+    var i = 0;
+    function walk(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === Node.TEXT_NODE) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split('').forEach(function (ch) {
+            var span = document.createElement('span');
+            span.className = 'js-anim-char';
+            span.style.setProperty('--i', i);
+            span.textContent = ch === ' ' ? '\u00A0' : ch;
+            frag.appendChild(span);
+            i++;
           });
-
-          // Phase 3: Clean up fade-in class after animation finishes
-          setTimeout(() => {
-            cols.forEach(col => col.classList.remove('fade-in'));
-          }, 350);
-
-        }, 350);
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE) {
+          walk(child);
+        }
+      });
+    }
+    walk(el);
+    return i;
+  }
+ 
+  function animateCount(el, delay) {
+    var target = parseInt(el.getAttribute('data-count-to'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = parseInt(el.getAttribute('data-count-duration') || '1200', 10);
+ 
+    setTimeout(function () {
+      if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+      var start = null;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1); // linear, no easing curve
+        el.textContent = Math.floor(progress * target) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+    }, Math.max(delay, 0));
+  }
+ 
+  function instantReveal(group) {
+    group.querySelectorAll('[data-animate]').forEach(function (el) { el.classList.add('is-visible'); });
+    group.querySelectorAll('[data-count-to]').forEach(function (el) {
+      var target = el.getAttribute('data-count-to');
+      var suffix = el.getAttribute('data-suffix') || '';
+      el.textContent = target + suffix;
+    });
+  }
+ 
+  function runGroup(group) {
+    if (prefersReducedMotion) { instantReveal(group); return; }
+ 
+    var waveStep = parseInt(group.getAttribute('data-animate-wave') || String(DEFAULT_WAVE_STEP), 10);
+    var items = Array.prototype.slice.call(group.querySelectorAll('[data-animate]'));
+ 
+    // Each item's start time is derived purely from its index in the wave
+    // (auto DOM order, or an explicit data-animate-index override) plus an
+    // optional fine-tune delay. Items no longer wait for prior items to
+    // finish animating — they all fire independently, overlapping freely.
+    items.forEach(function (el, autoIndex) {
+      var type = el.getAttribute('data-animate');
+      var idxAttr = el.getAttribute('data-animate-index');
+      var index = idxAttr !== null && idxAttr !== '' ? parseFloat(idxAttr) : autoIndex;
+      var extraDelay = parseInt(el.getAttribute('data-animate-delay') || '0', 10);
+      var startAt = Math.max(index * waveStep + extraDelay, 0);
+ 
+      if (type === 'chars') {
+        var n = splitChars(el);
+        var chars = el.querySelectorAll('.js-anim-char');
+        chars.forEach(function (c, ci) {
+          setTimeout(function () { c.classList.add('is-visible'); }, startAt + ci * CHAR_STEP);
+        });
+      } else {
+        setTimeout(function () { el.classList.add('is-visible'); }, startAt);
+      }
+ 
+      // any counters living inside (or on) this element start right after
+      // THIS element reveals — not after the whole sequence up to it.
+      var counters = el.hasAttribute('data-count-to') ? [el] : el.querySelectorAll('[data-count-to]');
+      counters.forEach(function (c, ci) {
+        animateCount(c, startAt + COUNTER_KICKOFF + ci * 60);
       });
     });
   }
-});
-
-/**
-* Trap keyboard focus inside a container (e.g. modal).
-* Returns a controller with a cleanup method.
-*/
-function trapFocus(container, initialFocus = null) {
-  // Collect focusable elements inside container
-  const focusable = Array.from(
-    container.querySelectorAll(
-      'a[href], button:not([disabled]), input:not([type="hidden"]):not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex^="-"])'
-    )
-  );
-
-  if (!focusable.length) return; // no focusable elements
-
-  const firstEl = focusable[0];
-  const lastEl = focusable[focusable.length - 1];
-
-  // Focus initial element or first available
-  (initialFocus || firstEl).focus();
-
-  function onKeydown(e) {
-    if (e.key !== "Tab") return;
-
-    if (e.shiftKey) {
-      // Shift + Tab (backward)
-      if (document.activeElement === firstEl || document.activeElement === container) {
-        e.preventDefault();
-        lastEl.focus();
-      }
-    } else {
-      // Tab forward
-      if (document.activeElement === lastEl) {
-        e.preventDefault();
-        firstEl.focus();
-      }
-    }
-
-    // ✅ Extra safeguard: if focus escapes, bring it back
-    if (!container.contains(document.activeElement)) {
-      e.preventDefault();
-      firstEl.focus();
-    }
-  }
-
-  function onFocusIn(e) {
-    if (!container.contains(e.target)) {
-      // Force focus back inside
-      e.stopPropagation();
-      firstEl.focus();
-    }
-  }
-
-  document.addEventListener("keydown", onKeydown);
-  document.addEventListener("focusin", onFocusIn);
-
-  return {
-    release(returnTo = null) {
-      document.removeEventListener("keydown", onKeydown);
-      document.removeEventListener("focusin", onFocusIn);
-      if (returnTo) returnTo.focus();
-    }
-  };
-}
-
-class ModalComponent extends HTMLElement {
-  constructor() {
-    super();
-
-    // In your structure, <modal-component> itself is the dialog
-    this.modal = this.querySelector(".modal-container") || this;
-
-    // Overlay + close button
-    this.overlay = this.querySelector(".modal-overlay");
-    this.closeBtn = this.querySelector(".btn-close-modal");
-
-    // Trap focus handler
-    this.trap = null;
-
-    // Opener reference for returning focus
-    this.opener = null;
-
-    // Bind methods once
-    this.onKeyUp = this.onKeyUp.bind(this);
-    this.onOutsideClick = this.onOutsideClick.bind(this);
-  }
-
-  connectedCallback() {
-    // Attach open buttons automatically
-    document.querySelectorAll(`[data-modal-target="#${this.id}"]`)
-      .forEach(btn => {
-        btn.addEventListener("click", (e) => {
-          e.preventDefault();
-          this.open(btn);
-        });
+ 
+  var groups = document.querySelectorAll('[data-animate-group]');
+  groups.forEach(function (group) {
+    var threshold = parseFloat(group.getAttribute('data-animate-threshold') || '0.3');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { runGroup(group); io.disconnect(); }
       });
-
-    // Close button inside modal
-    if (this.closeBtn) {
-      this.closeBtn.addEventListener("click", () => this.close());
-    }
-  }
-
-  open(opener = null) {
-    this.classList.add("is-active");
-    document.body.classList.add("no-scroll");
-
-    // Trap focus inside modal container
-    this.trap = trapFocus(this.modal, this.closeBtn || this.modal);
-
-    // Store opener for restoring focus later
-    this.opener = opener;
-
-    // Accessibility state
-    this.setAttribute("aria-hidden", "false");
-
-    // Event listeners
-    document.addEventListener("keyup", this.onKeyUp);
-    if (this.overlay) this.overlay.addEventListener("click", this.onOutsideClick);
-  }
-
-  close() {
-    this.classList.remove("is-active");
-    document.body.classList.remove("no-scroll");
-
-    // Release focus trap
-    if (this.trap) {
-      this.trap.release(this.opener);
-      this.trap = null;
-    }
-
-    // Restore focus to opener
-    if (this.opener) {
-      this.opener.focus();
-      this.opener = null;
-    }
-
-    // Accessibility state
-    this.setAttribute("aria-hidden", "true");
-
-    // Remove listeners
-    document.removeEventListener("keyup", this.onKeyUp);
-    if (this.overlay) this.overlay.removeEventListener("click", this.onOutsideClick);
-  }
-
-  onKeyUp(e) {
-    if (e.key === "Escape") {
-      this.close();
-    }
-  }
-
-  onOutsideClick(e) {
-    if (e.target === this.overlay) {
-      this.close();
-    }
-  }
-}
-
-// Register custom element safely
-if (!customElements.get("modal-component")) {
-  customElements.define("modal-component", ModalComponent);
-}
+    }, { threshold: threshold });
+    io.observe(group);
+  });
+})();
