@@ -612,9 +612,6 @@ h5 { font-size: 16px; }
   line-height: 1.65;
 }
 @media (max-width: 900px) {
-  .benefits-section {
-    padding: 80px 0 90px;
-  }
   .benefits-section_header {
     margin-bottom: 45px;
   }
@@ -632,7 +629,7 @@ h5 { font-size: 16px; }
 }
 @media (max-width: 600px) {
   .benefits-section {
-    padding: 70px 0 80px;
+    padding: 20px 0 20px;
   }
   .benefits-section_header {
     margin-bottom: 36px;
@@ -896,10 +893,6 @@ h5 { font-size: 16px; }
 
 /* ---------- Responsive: tablet ---------- */
 @media (max-width: 900px) {
-  .why-section {
-    padding: 20px 0 20px;
-  }
-
   .why-section_header {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -928,7 +921,7 @@ h5 { font-size: 16px; }
 /* ---------- Responsive: mobile ---------- */
 @media (max-width: 600px) {
   .why-section {
-    padding: 60px 0 70px;
+    padding: 20px 0 20px;
   }
 
   .why-section_heading {
