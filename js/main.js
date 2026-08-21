@@ -4,6 +4,8 @@
    ================================================================== */
 (function () {
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DESKTOP_BREAKPOINT = 900; // px — char animation only runs above this width
+  var isMobile = window.innerWidth < DESKTOP_BREAKPOINT;
   var DEFAULT_WAVE_STEP = 80;   // ms between each index step — tighter = smoother wave
   var COUNTER_KICKOFF = 150;    // ms after an element reveals before its counter starts
   var CHAR_STEP = 24;           // ms between each character starting (tighter = more fluid)
@@ -82,14 +84,22 @@
       var extraDelay = parseInt(el.getAttribute('data-animate-delay') || '0', 10);
       var startAt = Math.max(index * waveStep + extraDelay, 0);
  
-      if (type === 'chars') {
-        var n = splitChars(el);
+      if (type === 'chars' && !isMobile) {
+        // Desktop only: split heading into individual chars and animate each one
+        splitChars(el);
         var chars = el.querySelectorAll('.js-anim-char');
         chars.forEach(function (c, ci) {
           setTimeout(function () { c.classList.add('is-visible'); }, startAt + ci * CHAR_STEP);
         });
       } else {
-        setTimeout(function () { el.classList.add('is-visible'); }, startAt);
+        // Mobile (or any non-chars type): simple opacity + translateY reveal — no extra DOM nodes
+        // Make sure the element itself is visible (chars sets opacity:1 via CSS, others start at 0)
+        if (type === 'chars') {
+          // On mobile the heading has opacity:1 from CSS already, just mark it visible
+          el.classList.add('is-visible');
+        } else {
+          setTimeout(function () { el.classList.add('is-visible'); }, startAt);
+        }
       }
  
       // any counters living inside (or on) this element start right after
@@ -127,4 +137,4 @@
     }, { threshold: threshold, rootMargin: '0px 0px -8% 0px' });
     io.observe(group);
   });
-})();
+})();
