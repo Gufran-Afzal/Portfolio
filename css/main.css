@@ -24,7 +24,7 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #ffffff;
+  background: #F7F7F8;
   color: #000000;
   line-height: 1.6;
   overflow-x: hidden; /* safety net: prevents horizontal scroll from any translateX leaking outside clipped areas */
@@ -59,9 +59,12 @@ h5 { font-size: 16px; }
 
 /* CSS variables (yours, plus a few added for this section) */
 :root {
-  --section-background-color: #ffffff;
+  --section-background-color: #F7F7F8;
   --section-text-color: #000000;
   --section-border-color: #e0e2e6;
+  --widget-background-color: #ffffff;
+  --widget-text-color: #000000;
+  --widget-border-color: #e0e2e6;
   --section-text-small: 14px;
   --section-text-medium: 16px;
   --section-text-large: 18px;
@@ -160,7 +163,7 @@ h5 { font-size: 16px; }
 }
 
 .hero-section_panel {
-  background: linear-gradient(90deg,#f7f8fa 60%,#e8e9ec 100%);
+  background: linear-gradient(90deg,#fff 60%,#e8e9ec 100%);
   border-radius: var(--hero-radius-lg);
   display: grid;
   grid-template-columns: 1fr;
@@ -726,9 +729,9 @@ h5 { font-size: 16px; }
 .why-card {
   min-width: 0;
   overflow: hidden;
-  border: 1px solid #dfe2e6;
-  border-radius: var(--hero-radius-md);
-  background: #ffffff;
+  border: 1px solid var(--widget-border-color);
+  border-radius: 16px;
+  background: var(--widget-background-color);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -1003,8 +1006,8 @@ h5 { font-size: 16px; }
   gap: 24px;
   min-height: 100%;
   padding: 28px 24px;
-  background: var(--section-background-color);
-  border: 1px solid var(--section-border-color);
+  background: var(--widget-background-color);
+  border: 1px solid var(--widget-border-color);
   border-radius: 16px;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1191,9 +1194,9 @@ h5 { font-size: 16px; }
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #dedfe3;
+  border: 1px solid var(--widget-border-color);
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: var(--widget-background-color);
 }
 
 .testimonial-card__content {
@@ -1339,8 +1342,11 @@ h5 { font-size: 16px; }
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
-  color: #66666d;
+.testimonial-trust-card__icon svg{
+  width: 20px;
+  height: 20px;
 }
 
 .testimonial-trust-card span {
