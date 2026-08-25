@@ -951,6 +951,242 @@ h5 { font-size: 16px; }
   }
 }
 
+/* =========================================
+   PROCESS SECTION
+   Mobile-first. Breakpoints at 768px and 992px.
+   Scroll-linked timeline — see js/process-timeline.js
+========================================= */
+
+.process-section {
+  --process-icon-size: 40px;
+  --process-ink: var(--widget-text-color);
+  --process-muted-title: var(--section-text-alternate-color);
+  --process-muted-text: var(--section-text-alternate-color);
+  position: relative;
+  padding: 70px 0 80px;
+  background: var(--section-background-color);
+}
+
+.process-section_inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ---------- Intro ---------- */
+.process-section_intro {
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.process-section_badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 32px;
+  padding: 6px 15px;
+  border: 1px solid var(--section-border-color);
+  border-radius: 999px;
+  background: var(--widget-background-color);
+  color: var(--widget-text-color);
+  font-size: var(--section-text-small);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.process-section_heading {
+  font-family: var(--heading-display-font);
+  font-weight: 500;
+}
+
+.process-section_description {
+  margin-top: 18px;
+  color: var(--section-text-alternate-color);
+  font-size: var(--section-text-medium);
+}
+
+/* ---------- Timeline / list ---------- */
+.process-section_timeline {
+  position: relative;
+  flex-basis: 100%;
+  width: 100%;
+}
+
+.process-section_list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Track + fill — positioned in JS (top/height are measured from the
+   actual first/last icon centers so they stay accurate at any card
+   height, any breakpoint, any content edit). Horizontal position is
+   pure CSS since icon width is a fixed token. */
+.process-section_track {
+  position: absolute;
+  left: 34px;
+  width: 2px;
+  background: var(--section-border-color);
+  z-index: 3; /* below icon (3) and card (2) — sits in the gutter left of
+                 the card's edge, so it's never covered, and passes cleanly
+                 behind the icon where the two meet */
+}
+
+.process-section_track-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--process-ink);
+  will-change: height;
+}
+
+/* ---------- Step ----------
+   The icon overlaps the card's top-left corner (its right half sits on
+   top of the card, left half sits outside it) and the track runs down
+   the outer gutter to the left of the card, continuously, unbroken by
+   card boundaries — not a separate icon column with a gap before the
+   card starts. */
+.process-step {
+  position: relative;
+}
+
+.process-step_icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 3;
+  width: var(--process-icon-size);
+  height: var(--process-icon-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--widget-background-color);
+  border: 1px solid var(--widget-border-color);
+  color: var(--widget-text-color);
+  transition: color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.process-step_icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.process-step_card {
+  position: relative;
+  z-index: 2;
+  padding: 18px 20px 18px 68px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.process-step_title {
+  margin: 0 0 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--process-muted-title);
+  transition: color 0.35s ease;
+}
+
+.process-step_text {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--process-muted-text);
+  font-size: var(--section-text-small);
+  line-height: 1.6;
+  transition: color 0.35s ease;
+}
+
+/* Active state — driven by data-process-step's .is-active class,
+   toggled in JS off the same progress value that sizes the fill. */
+.process-step.is-active .process-step_icon {
+  color: var(--process-ink);
+  box-shadow: 0 10px 24px rgba(20, 22, 26, 0.1);
+}
+
+.process-step.is-active .process-step_card {
+  background: var(--widget-background-color);
+  border-color: var(--widget-border-color);
+  box-shadow: 0 18px 45px rgba(20, 22, 26, 0.07);
+}
+
+.process-step.is-active .process-step_title {
+  color: var(--process-ink);
+}
+
+.process-step.is-active .process-step_text {
+  color: var(--section-text-alternate-color);
+}
+
+/* No-JS fallback: keep everything readable instead of stuck muted forever. */
+.no-js .process-step_card {
+  background: var(--widget-background-color);
+  border-color: var(--widget-border-color);
+}
+.no-js .process-step_title { color: var(--process-ink); }
+.no-js .process-step_text { color: var(--section-text-alternate-color); }
+.no-js .process-section_track-fill { height: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step_icon,
+  .process-step_card,
+  .process-step_title,
+  .process-step_text,
+  .process-section_track-fill {
+    transition: none;
+  }
+}
+
+/* ---------- 768px and up ---------- */
+@media (min-width: 768px) {
+  .process-section {
+    padding: 90px 0 100px;
+  }
+  .process-section_list {
+    gap: 32px;
+  }
+  .process-step_card {
+    padding: 22px 26px 22px 80px;
+  }
+  .process-step_title {
+    font-size: 20px;
+  }
+  .process-step_icon {
+    top: 20px;
+    left: 18px;
+  }
+  .process-section_track{
+    left: 37px;
+  }
+}
+
+@media (min-width: 992px) {
+  .process-section_inner {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 64px;
+  }
+  .process-section_intro {
+    flex-basis: 50%;
+    position: sticky;
+    top: 120px;
+  }
+  .process-section_timeline {
+    flex-basis: 50%;
+  }
+  .process-section_heading {
+    font-size: 44px;
+  }
+}
+
 /* ===========================
   EXPERTISE SECTION - DESIGN + BUILD
    =========================== */
@@ -1691,11 +1927,11 @@ h5 { font-size: 16px; }
   FOOTER SECTION
   ========================================================= */
 
-.footer-section{
+.footer{
   position: relative;
-  padding: 20px 0 20px;
   background-color: var(--section-background-color);
   color: var(--section-text-color);
+  margin-bottom: 20px;
 }
 
 .footer__top-wrapper{
@@ -1706,7 +1942,8 @@ h5 { font-size: 16px; }
   width: 100%;
   background: var(--widget-background-color);
   padding: 20px;
-  border-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
   gap: 16px;
 }
 
@@ -1765,10 +2002,25 @@ h5 { font-size: 16px; }
   font-size: var(--section-text-medium);
 }
 
+.footer__bottom-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  background: var(--widget-text-color);
+  color: var(--widget-background-color);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  padding: 10px 20px;
+}
+
+.footer__copyright,
+.footer__credit {
+  font-size: var(--section-text-small);
+}
+
 @media (min-width: 768px) {
-  .footer-section{
-    padding: 40px 0 40px;
-  }
   .footer__top-wrapper{
     flex-direction: row;
     padding: 40px;
@@ -1790,5 +2042,8 @@ h5 { font-size: 16px; }
   .footer__pages-menu strong,
   .footer__social-menu strong{
     margin-bottom: 12px;
+  }
+  .footer__bottom-wrapper{
+    padding: 10px 40px;
   }
 }

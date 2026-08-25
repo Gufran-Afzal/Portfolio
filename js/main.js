@@ -138,3 +138,94 @@
     io.observe(group);
   });
 })();
+
+
+/* ==================================================================
+   process-timeline.js — scroll-linked progress timeline
+   Pair with .process-section markup (data-process-list / -track /
+   -fill / -step / -icon attributes). Self-contained, one section
+   per page assumed; duplicate the data-process-list block if you
+   ever need a second timeline.
+
+   How it works:
+   - A single "trigger line" sits at 50% of the viewport height.
+   - Progress = how far that trigger line has traveled down the
+     track (0 at the top icon, 1 at the bottom icon), clamped 0–1.
+   - The fill bar's height is set directly from that progress.
+   - A step is marked .is-active the moment the trigger line reaches
+     or passes its icon's center — the exact same reference point
+     the fill bar uses, so the bar and the active cards can never
+     drift out of sync.
+   ================================================================== */
+(function () {
+  var list = document.querySelector('[data-process-list]');
+  if (!list) return;
+
+  var track = list.querySelector('[data-process-track]');
+  var fill = list.querySelector('[data-process-fill]');
+  var steps = Array.prototype.slice.call(list.querySelectorAll('[data-process-step]'));
+  if (!track || !fill || !steps.length) return;
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    steps.forEach(function (step) { step.classList.add('is-active'); });
+    fill.style.height = '100%';
+    return;
+  }
+
+  var icons = steps.map(function (step) { return step.querySelector('[data-process-icon]'); });
+  var ticking = false;
+  var resizeTimer = null;
+
+  // Positions the track/fill container to span exactly from the first
+  // icon's center to the last icon's center, measured against the
+  // list. Re-run on resize since card heights reflow at each breakpoint.
+  function measureTrack() {
+    var listRect = list.getBoundingClientRect();
+    var firstRect = icons[0].getBoundingClientRect();
+    var lastRect = icons[icons.length - 1].getBoundingClientRect();
+    var top = (firstRect.top + firstRect.height / 2) - listRect.top;
+    var bottom = (lastRect.top + lastRect.height / 2) - listRect.top;
+    track.style.top = top + 'px';
+    track.style.height = Math.max(bottom - top, 0) + 'px';
+  }
+
+  function update() {
+    ticking = false;
+    var triggerY = window.innerHeight * 0.5;
+    var trackRect = track.getBoundingClientRect();
+
+    var progress = trackRect.height > 0
+      ? (triggerY - trackRect.top) / trackRect.height
+      : 0;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    fill.style.height = (progress * 100) + '%';
+
+    icons.forEach(function (icon, i) {
+      var rect = icon.getBoundingClientRect();
+      var center = rect.top + rect.height / 2;
+      steps[i].classList.toggle('is-active', center <= triggerY);
+    });
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      measureTrack();
+      update();
+    }, 120);
+  }
+
+  measureTrack();
+  update();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize);
+})();
