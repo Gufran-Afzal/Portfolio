@@ -157,13 +157,242 @@ h5 { font-size: 16px; }
   }
 }
 
-/* ========== HERO SECTION ========== */
-.hero-section {
-  background: var(--section-background-color);
-  padding: 40px 0 10px;
-  overflow: hidden; /* keeps the slide-in transforms from creating scrollbars */
+/* =========================================================
+    SHARED HEADER CONTENT STYLES
+    Both the primary header and the ghost sticky header reuse
+    these same descendant classes (logo, nav, cta, toggle) so
+    there's exactly one place to edit content/behavior styling.
+    ========================================================= */
+.header_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.header_logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--section-text-color);
 }
 
+.header_nav { display: none; }
+.header_nav-list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.header_nav-link {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--section-text-color);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.header_nav-link::after{
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transition: width .3s;
+}
+.header_nav-link:hover::after{
+  width: 100%;
+}
+.header_nav-link:hover,
+.header_nav-link:focus-visible { opacity: 1; }
+.header_cta {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.header_cta:hover { opacity: 0.85; transform: translateY(-1px); }
+.header_cta-icon { width: 14px; height: 14px; }
+.header_toggle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+.header_toggle:hover { background-color: rgba(0, 0, 0, 0.05); }
+.header_toggle-bar {
+  width: 20px;
+  height: 2px;
+  background-color: var(--section-text-color);
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.2s ease;
+}
+.header_toggle--active .header_toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.header_toggle--active .header_toggle-bar:nth-child(2) { opacity: 0; }
+.header_toggle--active .header_toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (min-width: 768px) {
+  .header_cta { display: inline-flex; }
+}
+@media (min-width: 992px) {
+  .header_nav { display: block; }
+  .header_toggle { display: none; }
+}
+
+/* =========================================================
+    1) PRIMARY HEADER — completely normal, in-flow.
+    It never becomes fixed, never becomes sticky. It just sits
+    at the top of the page and scrolls away like any element.
+    This is what removes the jerk at the source: nothing about
+    ITS position ever changes.
+    ========================================================= */
+.header {
+  position: relative;
+  z-index: 9999;
+  width: 100%;
+  background-color: var(--section-background-color);
+  padding: 16px 20px;
+}
+
+.header_logo-icon{
+  width: auto;
+  height: 24px;
+}
+
+/* =========================================================
+    2) GHOST STICKY HEADER — a separate, always-fixed element.
+    It is position: fixed from first paint, forever. We NEVER
+    toggle its `position`. We only toggle opacity/transform,
+    which the browser can animate on the compositor thread —
+    no layout recalculation, no reflow, no jerk, on any device.
+    It's invisible and inert until you scroll past the trigger.
+    ========================================================= */
+.header-ghost {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  z-index: 9999;
+  width: calc(100% - 24px);
+  max-width: calc(820px - 24px);
+  background-color: var(--widget-background-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -10px) scale(0.98);
+  transition:
+    opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.35s;
+}
+.header-ghost--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* ========== MOBILE POPUP MENU (shared by both headers) ========== */
+.header_mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.4);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1001;
+}
+.header_mobile-overlay--open {
+  opacity: 1;
+  visibility: visible;
+}
+.header_mobile-panel {
+  position: fixed;
+  top: 84px;
+  left: 16px;
+  right: 16px;
+  background-color: var(--widget-background-color);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  padding: 8px;
+  opacity: 0;
+  transform: translateY(-14px) scale(0.97);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.header_mobile-overlay--open .header_mobile-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.header_mobile-list { list-style: none; margin: 0; padding: 0; }
+.header_mobile-item + .header_mobile-item { border-top: 1px solid rgba(0, 0, 0, 0.06); }
+.header_mobile-link {
+  display: block;
+  padding: 15px 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--section-text-color);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background-color 0.15s ease;
+}
+.header_mobile-link:hover,
+.header_mobile-link:focus-visible { background-color: rgba(0, 0, 0, 0.04); }
+.header_mobile-footer {
+  padding: 10px 6px 6px;
+  margin-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.header_mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+body.header_no-scroll { overflow: hidden; }
+
+.hero-section {
+  background: var(--section-background-color);
+  padding: 0 0 10px;
+  overflow: hidden;
+}
 .hero-section_panel {
   background: linear-gradient(90deg,#fff 60%,#e8e9ec 100%);
   border-radius: var(--hero-radius-lg);
@@ -172,7 +401,6 @@ h5 { font-size: 16px; }
   overflow: hidden;
   position: relative;
 }
-
 @media (min-width: 900px) {
   .hero-section_panel {
     grid-template-columns: 1fr 1fr;
@@ -180,8 +408,6 @@ h5 { font-size: 16px; }
     min-height: 680px;
   }
 }
-
-/* ---------- Left: content ---------- */
 .hero-section_content {
   padding: 56px 24px 40px;
   display: flex;
@@ -1998,8 +2224,21 @@ h5 { font-size: 16px; }
 }
 
 .footer__menu-link{
-  width: 100%;
+  display: inline-block;
+  width: fit-content;
   font-size: var(--section-text-medium);
+}
+
+.footer__menu-link::after{
+  content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .3s;
+}
+.footer__menu-link:hover::after{
+  width: 100%;
 }
 
 .footer__bottom-wrapper{

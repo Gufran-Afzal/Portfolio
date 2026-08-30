@@ -1,7 +1,71 @@
 /* ==================================================================
-   scroll-reveal.js — WAVE-STAGGER ENGINE  v2
-   Responsive-safe: thresholds auto-clamp so mobile never gets stuck.
-   ================================================================== */
+  scroll-reveal.js — WAVE-STAGGER ENGINE  v2
+  Responsive-safe: thresholds auto-clamp so mobile never gets stuck.
+  ================================================================== */
+
+const ghost = document.getElementById('ghostHeader');
+const overlay = document.getElementById('headerMobileOverlay');
+const toggles = document.querySelectorAll('[data-menu-toggle]');
+const mobileLinks = overlay.querySelectorAll('.header_mobile-link, .header_mobile-cta');
+const STICKY_OFFSET = 200; // roughly the primary header's own height
+let ticking = false;
+let menuOpen = false;
+
+// --- Ghost header fade-in, rAF-throttled so it's synced to paint ---
+function updateGhostState() {
+  const shouldShow = window.scrollY > STICKY_OFFSET;
+  ghost.classList.toggle('header-ghost--visible', shouldShow);
+
+  // Keep the hidden ghost header out of the tab order / AT tree.
+  // `inert` (native, no polyfill needed in evergreen browsers) disables
+  // focus + interaction on everything inside it in one line.
+  ghost.toggleAttribute('inert', !shouldShow);
+  ghost.setAttribute('aria-hidden', String(!shouldShow));
+
+  ticking = false;
+}
+function handleScroll() {
+  if (!ticking) {
+    requestAnimationFrame(updateGhostState);
+    ticking = true;
+  }
+}
+window.addEventListener('scroll', handleScroll, { passive: true });
+updateGhostState();
+
+// --- Shared mobile popup menu, triggerable from either header ---
+function openMenu() {
+  menuOpen = true;
+  overlay.classList.add('header_mobile-overlay--open');
+  toggles.forEach((btn) => {
+    btn.classList.add('header_toggle--active');
+    btn.setAttribute('aria-expanded', 'true');
+  });
+  document.body.classList.add('header_no-scroll');
+}
+function closeMenu(focusTarget) {
+  menuOpen = false;
+  overlay.classList.remove('header_mobile-overlay--open');
+  toggles.forEach((btn) => {
+    btn.classList.remove('header_toggle--active');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+  document.body.classList.remove('header_no-scroll');
+  if (focusTarget) focusTarget.focus();
+}
+
+toggles.forEach((btn) => {
+  btn.addEventListener('click', () => (menuOpen ? closeMenu(btn) : openMenu()));
+});
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menuOpen) closeMenu();
+});
+mobileLinks.forEach((link) => link.addEventListener('click', () => closeMenu()));
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 992 && menuOpen) closeMenu();
+});
+
 (function () {
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DESKTOP_BREAKPOINT = 900; // px — char animation only runs above this width
