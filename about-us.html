@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio - Ghufran Afzal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" type="image/png" href="./assets/svg/G Icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/about-us.css">
+</head>
+<body>
+  <!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="./index.html" class="header_logo">
+          <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+            <li><a href="./index.html" class="header_nav-link">Home</a></li>
+            <li><a href="./about-us.html" class="header_nav-link">About</a></li>
+            <li><a href="#" class="header_nav-link">Projects</a></li>
+            <li><a href="#" class="header_nav-link">Articles</a></li>
+            <li><a href="#" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="header_cta">
+          Let's talk
+          <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (always fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="#" class="header_logo">
+        <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+      </a>
+      <nav class="header_nav" aria-label="Primary">
+        <ul class="header_nav-list">
+          <li><a href="./index.html" class="header_nav-link">Home</a></li>
+          <li><a href="./about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="#" class="header_nav-link">Projects</a></li>
+          <li><a href="#" class="header_nav-link">Articles</a></li>
+          <li><a href="#" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="header_cta">
+        Let's talk
+        <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
+        <span class="header_toggle-bar"></span>
+        <span class="header_toggle-bar"></span>
+        <span class="header_toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="./index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="./about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Articles</a></li>
+        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="#" class="header_mobile-cta">
+          Let's talk
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+	<footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <div class="footer__pages-menu">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item">
+                <a href="./index.html" class="footer__menu-link">Home</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="./about-us.html" class="footer__menu-link">About</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Services</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Projects</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__social-menu">
+            <strong>Social</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Instagram</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Facebook</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Tiktok</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Linkedin</a>
+              </li>
+              <li class="footer__menu-item">
+                <a href="#" class="footer__menu-link">Youtube</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">
+          © 2026 Ghufran Afzal. All rights reserved.
+        </p>
+
+        <p class="footer__credit">
+          Designed & built by Ghufran Afzal.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+<script src="./js/main.js"></script>
+</body>
+</html>
