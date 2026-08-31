@@ -799,7 +799,7 @@
   --process-muted-title: var(--section-text-alternate-color);
   --process-muted-text: var(--section-text-alternate-color);
   position: relative;
-  padding: 70px 0 80px;
+  padding: 20px 0 20px;
   background: var(--section-background-color);
 }
 
@@ -984,7 +984,7 @@
 /* ---------- 768px and up ---------- */
 @media (min-width: 768px) {
   .process-section {
-    padding: 90px 0 100px;
+    padding: 40px 0 40px;
   }
   .process-section_list {
     gap: 32px;
