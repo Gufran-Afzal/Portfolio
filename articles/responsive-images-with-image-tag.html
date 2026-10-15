@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Responsive Shopify images with image_tag, done properly | Ghufran Afzal</title>
+<meta name="description" content="Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Responsive Shopify images with image_tag, done properly | Ghufran Afzal">
+<meta property="og:description" content="Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Responsive Shopify images with image_tag, done properly","description":"Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.","datePublished":"2026-09-12","author":{"@type":"Person","name":"Ghufran Afzal"}}</script><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link" aria-current="page">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <div class="read-progress" data-read-progress aria-hidden="true"></div>
+  <main id="main">
+    <article class="article">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../articles.html">Articles</a><span aria-hidden="true">/</span><span aria-current="page">Performance</span></nav>
+        <header class="article-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Performance</span>
+          <h1 class="article-head__heading" data-animate="fade-up">Responsive Shopify images with image_tag, done properly</h1>
+          <p class="article-head__text" data-animate="fade-up">Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.</p>
+          <p class="article-head__meta" data-animate="fade-up"><span>By Ghufran Afzal</span><span aria-hidden="true">·</span><time datetime="2026-09-12">Sep 12, 2026</time><span aria-hidden="true">·</span><span>2 min read</span></p>
+        </header>
+        <nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#generate-a-set-of-widths">Generate a set of widths</a></li><li><a href="#write-sizes-honestly">Write `sizes` honestly</a></li><li><a href="#treat-the-first-image-differently">Treat the first image differently</a></li><li><a href="#always-keep-dimensions">Always keep dimensions</a></li><li><a href="#quick-checklist">Quick checklist</a></li></ol></nav>
+        <div class="prose prose--article">
+<p>Images are usually the heaviest part of a storefront, and the easiest place to win back speed. Shopify's <code>image_url</code> and <code>image_tag</code> filters give you almost everything you need, if you actually use their options.</p>
+<h2 id="generate-a-set-of-widths">Generate a set of widths</h2>
+<p>Instead of one fixed size, ask Shopify to output a <code>srcset</code> with several widths and tell the browser how wide the image will be displayed through <code>sizes</code>.</p>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{{ product.featured_image
+  | image_url: width: 1600
+  | image_tag:
+      widths: '400, 600, 800, 1200, 1600',
+      sizes: '(min-width: 990px) 50vw, 100vw',
+      alt: product.featured_image.alt }}</code></pre></div>
+<p>The browser now picks the smallest file that still looks sharp on that screen. A phone no longer downloads a desktop-sized image.</p>
+<h2 id="write-sizes-honestly">Write <code>sizes</code> honestly</h2>
+<p><code>sizes</code> is a description of layout, not a guess. If the image fills half the viewport on desktop and the full width on mobile, say exactly that. A wrong <code>sizes</code> value quietly makes the browser choose a file that is too large or too small.</p>
+<h2 id="treat-the-first-image-differently">Treat the first image differently</h2>
+<p>Images below the fold should load lazily. The main image at the top of the page should not, and it should be prioritised, because it is usually the Largest Contentful Paint element.</p>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{{ section.settings.hero_image
+  | image_url: width: 1800
+  | image_tag:
+      widths: '800, 1200, 1800',
+      sizes: '100vw',
+      loading: 'eager',
+      fetchpriority: 'high' }}</code></pre></div>
+<h2 id="always-keep-dimensions">Always keep dimensions</h2>
+<p><code>image_tag</code> outputs width and height attributes from the image itself. Leave them in. They let the browser reserve space before the image arrives, which prevents layout shift.</p>
+<h2 id="quick-checklist">Quick checklist</h2>
+<ul><li>Use a <code>widths</code> list, not a single size.</li><li>Write an accurate <code>sizes</code> value.</li><li>Eager and high priority for the first visible image only.</li><li>Lazy for everything else.</li><li>Never remove width and height.</li></ul>
+<p>Small changes, applied consistently across a theme, add up to a noticeably lighter page.</p>
+        </div>
+        <ul class="chips chips--tags" aria-label="Tags"><li>Images</li><li>Liquid</li><li>Core Web Vitals</li></ul>
+        <aside class="author-box">
+          <img src="../assets/img/hero-portrait.webp" alt="" width="64" height="64" loading="lazy">
+          <div><strong>Ghufran Afzal</strong><p>Shopify developer building fast, conversion-focused storefronts. <a href="../contact.html">Work with me</a>.</p></div>
+        </aside>
+      </div>
+      <div class="container">
+        <section class="related"><h2 class="related__heading">Keep reading</h2><div class="post-grid"><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload cart drawer with the section rendering api how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload cart drawer with the Section Rendering API</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: auditing a slow shopify theme, step by step the repeatable order i follow when a store feels slow, so the biggest wins come first and every change is measured. performance audit theme case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/auditing-a-slow-shopify-theme.html">Case study: auditing a slow Shopify theme, step by step</a></h3>
+          <p class="post-card__text">The repeatable order I follow when a store feels slow, so the biggest wins come first and every change is measured.</p>
+          <div class="post-card__foot"><time datetime="2026-09-24">Sep 24, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+<script src="../js/article.js"></script>
+</body>
+</html>

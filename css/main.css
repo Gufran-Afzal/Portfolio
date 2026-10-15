@@ -12,9 +12,35 @@ img { max-width: 100%; display: block; }
 input, button, textarea, select {
   font: inherit;
   border: none;
-  outline: none;
   background: none;
 }
+
+/* Global a11y: hidden must always win over component display rules */
+[hidden] { display: none !important; }
+
+/* Keyboard focus ring. The old reset removed outlines entirely, so keyboard
+   users could not see where they were. Two-tone ring works on light + dark. */
+:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #fff;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 10000;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
 
 /* ========== BASE STYLES ========== */
 html {
@@ -109,7 +135,7 @@ h5,.h5 { font-size: 16px; }
 }
 
 /* generic directional reveals — data-animate="fade-up|fade-left|fade-right|fade-in|scale-in" */
-[data-animate] {
+.js [data-animate] {
   opacity: 0;
   /* smooth wave easing — elements decelerate gracefully into place */
   transition:
@@ -121,16 +147,16 @@ h5,.h5 { font-size: 16px; }
 /* Kept translateY-only for all directional types on mobile to prevent
    any horizontal overflow from translateX. fade-right becomes a gentle
    upward fade on narrow viewports (see media query below). */
-[data-animate="fade-up"]    { transform: translateY(22px); }
-[data-animate="fade-left"]  { transform: translateX(-24px); }
-[data-animate="fade-right"] { transform: translateX(24px); }
-[data-animate="fade-in"]    { transform: none; }
-[data-animate="scale-in"]   { transform: scale(0.95); }
+.js [data-animate="fade-up"]    { transform: translateY(22px); }
+.js [data-animate="fade-left"]  { transform: translateX(-24px); }
+.js [data-animate="fade-right"] { transform: translateX(24px); }
+.js [data-animate="fade-in"]    { transform: none; }
+.js [data-animate="scale-in"]   { transform: scale(0.95); }
 /* chars: on desktop the element wrapper is visible and only the child spans animate */
-[data-animate="chars"]      { opacity: 1; transform: none; }
+.js [data-animate="chars"]      { opacity: 1; transform: none; }
 /* on mobile chars falls back to a plain fade-up — same initial state as fade-up */
 @media (max-width: 899px) {
-  [data-animate="chars"] { opacity: 0; transform: translateY(22px); }
+  .js [data-animate="chars"] { opacity: 0; transform: translateY(22px); }
 }
 
 [data-animate].is-visible {
@@ -141,13 +167,14 @@ h5,.h5 { font-size: 16px; }
 /* On mobile, convert all horizontal slides to vertical fades to prevent
    any chance of horizontal scrollbar / clipping glitches */
 @media (max-width: 900px) {
-  [data-animate="fade-left"],
-  [data-animate="fade-right"] {
+  .js [data-animate="fade-left"],
+  .js [data-animate="fade-right"] {
     transform: translateY(18px);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .js-anim-char,
   [data-animate] {
     transition: none !important;
@@ -204,9 +231,12 @@ h5,.h5 { font-size: 16px; }
   background: #000;
   transition: width .3s;
 }
-.header_nav-link:hover::after{
+.header_nav-link:hover::after,
+.header_nav-link[aria-current="page"]::after{
   width: 100%;
 }
+.header_nav-link[aria-current="page"] { opacity: 1; }
+.header_mobile-link[aria-current="page"] { background-color: rgba(0, 0, 0, 0.05); }
 .header_nav-link:hover,
 .header_nav-link:focus-visible { opacity: 1; }
 .header_cta {

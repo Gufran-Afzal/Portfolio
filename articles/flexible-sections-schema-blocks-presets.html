@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Building flexible theme sections: schema, blocks and presets | Ghufran Afzal</title>
+<meta name="description" content="The three parts of a section schema that decide whether a merchant can actually use your work without calling you.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building flexible theme sections: schema, blocks and presets | Ghufran Afzal">
+<meta property="og:description" content="The three parts of a section schema that decide whether a merchant can actually use your work without calling you.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Building flexible theme sections: schema, blocks and presets","description":"The three parts of a section schema that decide whether a merchant can actually use your work without calling you.","datePublished":"2026-08-29","author":{"@type":"Person","name":"Ghufran Afzal"}}</script><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link" aria-current="page">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <div class="read-progress" data-read-progress aria-hidden="true"></div>
+  <main id="main">
+    <article class="article">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../articles.html">Articles</a><span aria-hidden="true">/</span><span aria-current="page">Liquid &amp; Themes</span></nav>
+        <header class="article-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Liquid &amp; Themes</span>
+          <h1 class="article-head__heading" data-animate="fade-up">Building flexible theme sections: schema, blocks and presets</h1>
+          <p class="article-head__text" data-animate="fade-up">The three parts of a section schema that decide whether a merchant can actually use your work without calling you.</p>
+          <p class="article-head__meta" data-animate="fade-up"><span>By Ghufran Afzal</span><span aria-hidden="true">·</span><time datetime="2026-08-29">Aug 29, 2026</time><span aria-hidden="true">·</span><span>1 min read</span></p>
+        </header>
+        <nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#settings-the-section-s-own-options">Settings: the section's own options</a></li><li><a href="#blocks-repeatable-content">Blocks: repeatable content</a></li><li><a href="#presets-make-it-addable">Presets: make it addable</a></li><li><a href="#a-compact-example">A compact example</a></li><li><a href="#habits-worth-keeping">Habits worth keeping</a></li></ol></nav>
+        <div class="prose prose--article">
+<p>A section is only as good as what the merchant can do with it. Good section schema is the difference between &quot;I need a developer for this&quot; and &quot;I'll just change it in the editor.&quot;</p>
+<h2 id="settings-the-section-s-own-options">Settings: the section's own options</h2>
+<p>Settings control the section as a whole: which collection to show, how many products, a background style.</p>
+<h2 id="blocks-repeatable-content">Blocks: repeatable content</h2>
+<p>Blocks let merchants add, remove and reorder pieces inside a section, such as feature items, slides or FAQs. Each block type has its own settings.</p>
+<h2 id="presets-make-it-addable">Presets: make it addable</h2>
+<p>Without a preset, a section cannot be added from the editor's &quot;Add section&quot; menu. It is a small detail that is easy to forget.</p>
+<h2 id="a-compact-example">A compact example</h2>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>&lt;section class=&quot;featured&quot; {{ section.shopify_attributes }}&gt;
+  {% for block in section.blocks %}
+    &lt;h2 {{ block.shopify_attributes }}&gt;{{ block.settings.text }}&lt;/h2&gt;
+  {% endfor %}
+&lt;/section&gt;
+
+{% schema %}
+{
+  &quot;name&quot;: &quot;Featured collection&quot;,
+  &quot;settings&quot;: [
+    { &quot;type&quot;: &quot;collection&quot;, &quot;id&quot;: &quot;collection&quot;, &quot;label&quot;: &quot;Collection&quot; },
+    {
+      &quot;type&quot;: &quot;range&quot;, &quot;id&quot;: &quot;products_to_show&quot;,
+      &quot;min&quot;: 2, &quot;max&quot;: 12, &quot;step&quot;: 1, &quot;default&quot;: 4,
+      &quot;label&quot;: &quot;Products to show&quot;
+    }
+  ],
+  &quot;blocks&quot;: [
+    {
+      &quot;type&quot;: &quot;heading&quot;,
+      &quot;name&quot;: &quot;Heading&quot;,
+      &quot;limit&quot;: 1,
+      &quot;settings&quot;: [
+        { &quot;type&quot;: &quot;text&quot;, &quot;id&quot;: &quot;text&quot;, &quot;label&quot;: &quot;Text&quot;, &quot;default&quot;: &quot;Featured&quot; }
+      ]
+    }
+  ],
+  &quot;presets&quot;: [{ &quot;name&quot;: &quot;Featured collection&quot; }]
+}
+{% endschema %}</code></pre></div>
+<h2 id="habits-worth-keeping">Habits worth keeping</h2>
+<ul><li><strong>Output <code>shopify_attributes</code></strong> on the section and its blocks, so the editor can highlight them when selected.</li><li><strong>Give every setting a sensible default.</strong> An empty section looks broken.</li><li><strong>Use ranges and selects over free text</strong> when the options are limited.</li><li><strong>Keep settings few and meaningful.</strong> Every extra option is something the merchant has to understand.</li></ul>
+<p>Designing the schema is designing the merchant's experience. It deserves the same care as the visual design.</p>
+        </div>
+        <ul class="chips chips--tags" aria-label="Tags"><li>Sections</li><li>Theme editor</li><li>Liquid</li></ul>
+        <aside class="author-box">
+          <img src="../assets/img/hero-portrait.webp" alt="" width="64" height="64" loading="lazy">
+          <div><strong>Ghufran Afzal</strong><p>Shopify developer building fast, conversion-focused storefronts. <a href="../contact.html">Work with me</a>.</p></div>
+        </aside>
+      </div>
+      <div class="container">
+        <section class="related"><h2 class="related__heading">Keep reading</h2><div class="post-grid"><article class="post-card" data-item data-category="liquid-and-themes" data-search="metafields vs metaobjects: which one should you use? both store custom data. they solve different problems, and choosing the wrong one makes a store harder to manage. metafields metaobjects data modelling liquid &amp; themes">
+          <div class="post-card__top"><span class="pill">Liquid &amp; Themes</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/metafields-vs-metaobjects.html">Metafields vs metaobjects: which one should you use?</a></h3>
+          <p class="post-card__text">Both store custom data. They solve different problems, and choosing the wrong one makes a store harder to manage.</p>
+          <div class="post-card__foot"><time datetime="2026-08-14">Aug 14, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload cart drawer with the section rendering api how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload cart drawer with the Section Rendering API</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+<script src="../js/article.js"></script>
+</body>
+</html>

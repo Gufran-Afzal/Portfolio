@@ -3,37 +3,42 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio - Ghufran Afzal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" type="image/png" href="./assets/svg/G Icon.svg">
+<!-- @seo --><title>Ghufran Afzal | Shopify Developer &amp; Designer</title>
+<meta name="description" content="Shopify developer building custom, fast, conversion-focused storefronts for ambitious brands. View projects and get in touch.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ghufran Afzal | Shopify Developer &amp; Designer">
+<meta property="og:description" content="Shopify developer building custom, fast, conversion-focused storefronts for ambitious brands. View projects and get in touch.">
+<meta name="twitter:card" content="summary"><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="./assets/svg/g-icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
 <link rel="stylesheet" href="./css/main.css">
 <link rel="stylesheet" href="./css/home-page.css">
+<link rel="stylesheet" href="./css/content.css">
 </head>
 <body>
-  <!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="header" id="mainHeader">
     <div class="container">
       <div class="header_wrapper">
-        <a href="./index.html" class="header_logo">
-          <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+        <a href="./index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="./assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
         </a>
         <nav class="header_nav" aria-label="Primary">
           <ul class="header_nav-list">
-            <li><a href="./index.html" class="header_nav-link">Home</a></li>
-            <li><a href="./about-us.html" class="header_nav-link">About</a></li>
-            <li><a href="#" class="header_nav-link">Projects</a></li>
-            <li><a href="#" class="header_nav-link">Articles</a></li>
-            <li><a href="./contact.html" class="header_nav-link">Contact</a></li>
+          <li><a href="./index.html" class="header_nav-link" aria-current="page">Home</a></li>
+          <li><a href="./about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="./projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="./articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="./contact.html" class="header_nav-link">Contact</a></li>
           </ul>
         </nav>
-        <a href="#" class="header_cta">
-          Let's talk
-          <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
+        <a href="./contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
           <span class="header_toggle-bar"></span>
           <span class="header_toggle-bar"></span>
           <span class="header_toggle-bar"></span>
@@ -42,32 +47,27 @@
     </div>
   </header>
 
-  <!-- ============ 2) GHOST STICKY HEADER (always fixed, hidden until scrolled) ============ -->
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
   <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
     <div class="header_wrapper">
-      <a href="#" class="header_logo">
-        <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+      <a href="./index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="./assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
       </a>
-      <nav class="header_nav" aria-label="Primary">
+      <nav class="header_nav" aria-label="Primary (sticky)">
         <ul class="header_nav-list">
-          <li><a href="./index.html" class="header_nav-link">Home</a></li>
+          <li><a href="./index.html" class="header_nav-link" aria-current="page">Home</a></li>
           <li><a href="./about-us.html" class="header_nav-link">About</a></li>
-          <li><a href="#" class="header_nav-link">Projects</a></li>
-          <li><a href="#" class="header_nav-link">Articles</a></li>
+          <li><a href="./projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="./articles.html" class="header_nav-link">Articles</a></li>
           <li><a href="./contact.html" class="header_nav-link">Contact</a></li>
         </ul>
       </nav>
-      <a href="#" class="header_cta">
-        Let's talk
-        <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
-        <span class="header_toggle-bar"></span>
-        <span class="header_toggle-bar"></span>
-        <span class="header_toggle-bar"></span>
-      </button>
+      <a href="./contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
     </div>
   </header>
 
@@ -75,23 +75,18 @@
   <div class="header_mobile-overlay" id="headerMobileOverlay">
     <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
       <ul class="header_mobile-list">
-        <li class="header_mobile-item"><a href="./index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="./index.html" class="header_mobile-link" aria-current="page">Home</a></li>
         <li class="header_mobile-item"><a href="./about-us.html" class="header_mobile-link">About</a></li>
-        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Projects</a></li>
-        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Articles</a></li>
+        <li class="header_mobile-item"><a href="./projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="./articles.html" class="header_mobile-link">Articles</a></li>
         <li class="header_mobile-item"><a href="./contact.html" class="header_mobile-link">Contact</a></li>
       </ul>
       <div class="header_mobile-footer">
-        <a href="#" class="header_mobile-cta">
-          Let's talk
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <a href="./contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
-  </div>
-  <main>
+  </div><!-- @/header -->
+  <main id="main">
     <section class="hero-section" id="home">
       <div class="container">
         <div class="hero-section_panel" data-animate-group data-animate-threshold="0.3">
@@ -103,8 +98,8 @@
               I help ambitious brands turn ideas into refined Shopify experiences — combining thoughtful design, clean development, and conversion-focused ecommerce.
             </p>
             <div class="hero-section_btn-wrapper" data-animate="fade-up">
-              <a href="#projects" class="hero-section_btn hero-section_btn--primary">View projects</a>
-              <a href="#contact" class="hero-section_btn hero-section_btn--secondary">Get in touch</a>
+              <a href="#work" class="hero-section_btn hero-section_btn--primary">View projects</a>
+              <a href="./contact.html" class="hero-section_btn hero-section_btn--secondary">Get in touch</a>
             </div>
             <div class="hero-section_stats" data-animate="fade-up">
               <div class="hero-section_stat">
@@ -122,15 +117,15 @@
             </div>
           </div>
           <div class="hero-section_image-wrapper" data-animate="fade-up" data-animate-delay="80">
-            <img class="hero-section_image" fetchpriority="high" loading="eager" src="./assets/img/main.png" alt="Portrait photo" />
+            <img class="hero-section_image" fetchpriority="high" loading="eager" decoding="async" src="./assets/img/hero-portrait.webp" width="1160" height="1360" alt="Portrait of Ghufran Afzal, Shopify developer" />
             <div class="hero-section_card">
               <div>
                 <span class="hero-section_card-eyebrow">Select project</span>
                 <p class="hero-section_card-title">Available for projects</p>
                 <p class="hero-section_card-text">Share a few details, and I'll get back with a clear direction.</p>
               </div>
-              <a href="#" class="hero-section_card-button" aria-hidden="true">
-                <img src="./assets/svg/down_left_arrow.svg" alt="down left arrow" />
+              <a href="./contact.html" class="hero-section_card-button" aria-label="Contact me">
+                <img src="./assets/svg/down_left_arrow.svg" alt="" width="24" height="24" />
               </a>
             </div>
           </div>
@@ -143,46 +138,102 @@
           <div class="logo-marquee__track">
             <!-- SET 1 -->
             <div class="logo-marquee__item">
-              <img src="./assets/svg/Patrice.png" class="logo-icon">
+              <img src="./assets/brands/patrice.png" class="logo-icon" alt="Patrice" loading="lazy">
             </div>
             <div class="logo-marquee__item">
-              <img src="./assets/svg/Susanna Falken.svg" class="logo-icon">
+              <img src="./assets/brands/susanna-falken.svg" class="logo-icon" alt="Susanna Falken" loading="lazy">
             </div>
             <div class="logo-marquee__item">
-              <img src="./assets/svg/SR Beauty.svg" class="logo-icon">
+              <img src="./assets/brands/sr-beauty.svg" class="logo-icon" alt="SR Beauty" loading="lazy">
             </div>
             <div class="logo-marquee__item">
-              <img src="./assets/svg/ROMAAN.svg" class="logo-icon">
+              <img src="./assets/brands/romaan.svg" class="logo-icon" alt="ROMAAN" loading="lazy">
             </div>
             <!-- <div class="logo-marquee__item">
-              <img src="./assets/svg/Zainab Salman.svg" class="logo-icon">
+              <img src="./assets/brands/zainab-salman.svg" class="logo-icon" alt="Zainab Salman" loading="lazy">
             </div> -->
             <div class="logo-marquee__item">
-              <img src="./assets/svg/Risen.svg" class="logo-icon">
+              <img src="./assets/brands/risen.svg" class="logo-icon" alt="Risen" loading="lazy">
             </div>
             <!-- SET 2 — DUPLICATE FOR SEAMLESS LOOP -->
             <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/Patrice.png" class="logo-icon">
+              <img src="./assets/brands/patrice.png" class="logo-icon" alt="" loading="lazy">
             </div>
             <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/Susanna Falken.svg" class="logo-icon">
+              <img src="./assets/brands/susanna-falken.svg" class="logo-icon" alt="" loading="lazy">
             </div>
             <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/SR Beauty.svg" class="logo-icon">
+              <img src="./assets/brands/sr-beauty.svg" class="logo-icon" alt="" loading="lazy">
             </div>
             <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/ROMAAN.svg" class="logo-icon">
+              <img src="./assets/brands/romaan.svg" class="logo-icon" alt="" loading="lazy">
             </div>
             <!-- <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/Zainab Salman.svg" class="logo-icon">
+              <img src="./assets/brands/zainab-salman.svg" class="logo-icon" alt="" loading="lazy">
             </div> -->
             <div class="logo-marquee__item" aria-hidden="true">
-              <img src="./assets/svg/Risen.svg" class="logo-icon">
+              <img src="./assets/brands/risen.svg" class="logo-icon" alt="" loading="lazy">
             </div>
           </div>
         </div>
       </div>
     </section>
+    <!-- @featured-projects -->
+    <section class="work-section" id="work" aria-labelledby="work-heading">
+      <div class="container">
+        <div class="section-head" data-animate-group data-animate-threshold="0.1">
+          <span class="pill pill--badge" data-animate="fade-up">Portfolio</span>
+          <h2 class="section-head__heading" id="work-heading" data-animate="fade-up">Selected work</h2>
+          <p class="section-head__text" data-animate="fade-up">A look at recent Shopify projects, from custom themes to performance and conversion work.</p>
+        </div>
+        <div class="work-grid work-grid--featured">
+          <article class="work-card" data-item data-category="custom-theme">
+          <div class="work-media work-media--card" style="--accent:#ebe6df"><img class="work-media__logo" src="./assets/brands/patrice.png" alt="" loading="lazy" decoding="async"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span class="pill">Custom Theme</span></div>
+            <h3 class="work-card__title"><a class="work-card__link" href="./projects/patrice.html">Patrice Fransez<span class="visually-hidden"> — view project</span></a></h3>
+            <p class="work-card__text">A custom Shopify theme built around the brand's identity, with flexible sections the team can rearrange without a developer.</p>
+            <ul class="work-card__tags"><li>Theme development</li><li>Custom sections</li><li>Responsive design</li></ul>
+          </div>
+          <span class="work-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+          <article class="work-card" data-item data-category="store-redesign">
+          <div class="work-media work-media--card" style="--accent:#e7e3ee"><img class="work-media__logo" src="./assets/brands/susanna-falken.svg" alt="" loading="lazy" decoding="async"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span class="pill">Store Redesign</span></div>
+            <h3 class="work-card__title"><a class="work-card__link" href="./projects/susanna-falken.html">Susanna Falken<span class="visually-hidden"> — view project</span></a></h3>
+            <p class="work-card__text">A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.</p>
+            <ul class="work-card__tags"><li>UI/UX design</li><li>Theme customization</li><li>Responsive design</li></ul>
+          </div>
+          <span class="work-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+          <article class="work-card" data-item data-category="performance-and-cro">
+          <div class="work-media work-media--card" style="--accent:#f0e3e3"><img class="work-media__logo" src="./assets/brands/sr-beauty.svg" alt="" loading="lazy" decoding="async"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span class="pill">Performance &amp; CRO</span></div>
+            <h3 class="work-card__title"><a class="work-card__link" href="./projects/sr-beauty.html">SR Beauty<span class="visually-hidden"> — view project</span></a></h3>
+            <p class="work-card__text">Speed and conversion improvements across the storefront, from image delivery to a smoother path from product to checkout.</p>
+            <ul class="work-card__tags"><li>Performance optimization</li><li>Conversion-focused UX</li><li>Theme customization</li></ul>
+          </div>
+          <span class="work-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+          <article class="work-card" data-item data-category="custom-theme">
+          <div class="work-media work-media--card" style="--accent:#e1e8e5"><img class="work-media__logo" src="./assets/brands/romaan.svg" alt="" loading="lazy" decoding="async"></div>
+          <div class="work-card__body">
+            <div class="work-card__meta"><span class="pill">Custom Theme</span></div>
+            <h3 class="work-card__title"><a class="work-card__link" href="./projects/romaan.html">ROMAAN<span class="visually-hidden"> — view project</span></a></h3>
+            <p class="work-card__text">A bespoke fragrance storefront with custom sections and a layout system designed to scale as the catalogue grows.</p>
+            <ul class="work-card__tags"><li>Theme development</li><li>Custom sections</li><li>UI/UX design</li></ul>
+          </div>
+          <span class="work-card__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </article>
+        </div>
+        <div class="work-section__more">
+          <a href="./projects.html" class="btn btn--primary">View all projects <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <!-- @/featured-projects -->
     <section class="benefits-section" id="benefits">
       <div class="container">
         <!-- Section header -->
@@ -220,7 +271,7 @@
             data-animate="fade-up"
           >
             <div class="benefit-card_visual benefit-card_visual--brand">
-              <img src="./assets/img/crafted for your brand.webp" alt="crafted for your brand">
+              <img src="./assets/img/benefit-crafted-for-your-brand.webp" alt="crafted for your brand" width="900" height="675" loading="lazy" decoding="async">
             </div>
             <div class="benefit-card_content">
               <h3 class="benefit-card_title">
@@ -238,7 +289,7 @@
             data-animate="fade-up"
           >
             <div class="benefit-card_visual benefit-card_visual--conversion">
-              <img src="./assets/img/built to convert.webp" alt="built to convert">
+              <img src="./assets/img/benefit-built-to-convert.webp" alt="built to convert" width="900" height="675" loading="lazy" decoding="async">
             </div>
             <div class="benefit-card_content">
               <h3 class="benefit-card_title">
@@ -256,7 +307,7 @@
             data-animate="fade-up"
           >
             <div class="benefit-card_visual benefit-card_visual--shopify">
-              <img src="./assets/img/fast and flexible.webp" alt="fast and flexible">
+              <img src="./assets/img/benefit-fast-and-flexible.webp" alt="fast and flexible" width="900" height="675" loading="lazy" decoding="async">
             </div>
             <div class="benefit-card_content">
               <h3 class="benefit-card_title">
@@ -293,16 +344,16 @@
           <article class="why-card why-card--clients" data-animate="fade-up">
             <div class="why-card_avatars">
               <span class="why-card_avatar why-card_avatar--1">
-                <img src="./assets/img/rohan.jpeg" alt="Rohan Avatar">
+                <img src="./assets/img/avatar-rohan.webp" alt="Rohan Avatar" width="80" height="80" loading="lazy" decoding="async">
               </span>
               <span class="why-card_avatar why-card_avatar--2">
-                <img src="./assets/img/Person-2.webp" alt="Persona 2 Avatar">
+                <img src="./assets/img/Person-2.webp" alt="Persona 2 Avatar" width="80" height="80" loading="lazy" decoding="async">
               </span>
               <span class="why-card_avatar why-card_avatar--3">
-                <img src="./assets/img/refik.jpeg" alt="Refik Avatar">
+                <img src="./assets/img/avatar-refik.webp" alt="Refik Avatar" width="80" height="80" loading="lazy" decoding="async">
               </span>
               <span class="why-card_avatar why-card_avatar--4">
-                <img src="./assets/img/sussana.jpg" alt="Susanna Avatar">
+                <img src="./assets/img/avatar-susanna.webp" alt="Susanna Avatar" width="80" height="80" loading="lazy" decoding="async">
               </span>
             </div>
             <span class="why-card_clients-label">20+ Happy clients</span>
@@ -535,7 +586,7 @@
         </div>
       </div>
     </section>
-    <section class="expertise-section">
+    <section class="expertise-section" id="services">
       <div class="container">
         <div
           class="expertise-section_header"
@@ -566,7 +617,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Custom Shopify</h5>
+              <h3 class="expertise-card_title">Custom Shopify</h3>
               <p class="expertise-card_text">Build tailored storefronts designed around your brand, products, and customers.</p>
             </div>
           </article>
@@ -575,7 +626,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72Z"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">UI/UX Design</h5>
+              <h3 class="expertise-card_title">UI/UX Design</h3>
               <p class="expertise-card_text">Create clear, intuitive experiences that make your store easier to explore and use.</p>
             </div>
           </article>
@@ -586,7 +637,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Theme Development</h5>
+              <h3 class="expertise-card_title">Theme Development</h3>
               <p class="expertise-card_text">Develop flexible Shopify themes with clean code, custom sections, and features.</p>
             </div>
           </article>
@@ -597,7 +648,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Performance</h5>
+              <h3 class="expertise-card_title">Performance</h3>
               <p class="expertise-card_text">Improve speed, responsiveness, and storefront performance across every device.</p>
             </div>
           </article>
@@ -608,7 +659,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Conversion Focus</h5>
+              <h3 class="expertise-card_title">Conversion Focus</h3>
               <p class="expertise-card_text">Design smoother product journeys that reduce friction and encourage more purchases.</p>
             </div>
           </article>
@@ -619,7 +670,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Integrations</h5>
+              <h3 class="expertise-card_title">Integrations</h3>
               <p class="expertise-card_text">Connect your store with the tools, apps, and services your business relies on.</p>
             </div>
           </article>
@@ -630,7 +681,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Responsive Design</h5>
+              <h3 class="expertise-card_title">Responsive Design</h3>
               <p class="expertise-card_text">Deliver polished experiences that look and work beautifully across all screen sizes.</p>
             </div>
           </article>
@@ -641,7 +692,7 @@
               </svg>
             </span>
             <div class="expertise-card_content">
-              <h5 class="expertise-card_title">Ongoing Support</h5>
+              <h3 class="expertise-card_title">Ongoing Support</h3>
               <p class="expertise-card_text">Refine, improve, and maintain your storefront as your business continues to grow.</p>
             </div>
           </article>
@@ -701,7 +752,7 @@
             </div>
             <div class="testimonial-card__author">
               <div class="testimonial-card__avatar">
-                <img src="./assets/img/Person-2.webp" alt="Person 1">
+                <img src="./assets/img/Person-2.webp" alt="Person 1" width="80" height="80" loading="lazy" decoding="async">
               </div>
               <div class="testimonial-card__author-info">
                 <strong>Daniel Morgan</strong>
@@ -721,7 +772,7 @@
               </p>
               <div class="testimonial-card__author">
                 <div class="testimonial-card__avatar">
-                  <img src="./assets/img/Person-1.webp" alt="Person 2">
+                  <img src="./assets/img/Person-1.webp" alt="Person 2" width="80" height="80" loading="lazy" decoding="async">
                 </div>
                 <div class="testimonial-card__author-info">
                   <strong>Olivia Bennett</strong>
@@ -746,7 +797,7 @@
           <div class="testimonials-section__column">
             <!-- CTA -->
             <a
-              href="#contact"
+              href="./contact.html"
               class="testimonial-cta"
               data-animate="fade-up"
             >
@@ -762,7 +813,7 @@
               </p>
               <div class="testimonial-card__author">
                 <div class="testimonial-card__avatar">
-                  <img src="./assets/img/Person-3.webp" alt="Person 3">
+                  <img src="./assets/img/Person-3.webp" alt="Person 3" width="80" height="80" loading="lazy" decoding="async">
                 </div>
                 <div class="testimonial-card__author-info">
                   <strong>James Carter</strong>
@@ -947,71 +998,38 @@
     </section>
   </main>
   
-  <footer class="footer">
+  <!-- @footer --><footer class="footer">
     <div class="container">
       <div class="footer__top-wrapper">
         <div class="footer__left">
           <div class="footer__logo">
-            <img src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+            <img src="./assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
           </div>
           <div class="footer__text">
             <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
           </div>
         </div>
         <div class="footer__right">
-          <div class="footer__pages-menu">
+          <nav class="footer__pages-menu" aria-label="Footer">
             <strong>Pages</strong>
             <ul class="footer__menu">
-              <li class="footer__menu-item">
-                <a href="./index.html" class="footer__menu-link">Home</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="./about-us.html" class="footer__menu-link">About</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Services</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Projects</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="./contact.html" class="footer__menu-link">Contact</a>
-              </li>
+              <li class="footer__menu-item"><a href="./index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="./about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="./index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="./projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="./articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="./contact.html" class="footer__menu-link">Contact</a></li>
             </ul>
-          </div>
-          <div class="footer__social-menu">
-            <strong>Social</strong>
-            <ul class="footer__menu">
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Instagram</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Facebook</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Tiktok</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Linkedin</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Youtube</a>
-              </li>
-            </ul>
-          </div>
+          </nav>
+          
         </div>
       </div>
       <div class="footer__bottom-wrapper">
-        <p class="footer__copyright">
-          © 2026 Ghufran Afzal. All rights reserved.
-        </p>
-
-        <p class="footer__credit">
-          Designed & built by Ghufran Afzal.
-        </p>
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
       </div>
     </div>
-  </footer>
+  </footer><!-- @/footer -->
 
 <script src="./js/main.js"></script>
 </body>

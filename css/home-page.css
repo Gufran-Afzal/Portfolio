@@ -86,7 +86,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/img/site-background.gif")
+  background: url("../assets/img/site-background.webp")
     center / cover no-repeat;
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -238,7 +238,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/img/site-background.gif")
+  background: url("../assets/img/site-background.webp")
     center / cover no-repeat;
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -1119,6 +1119,7 @@
 }
 
 .expertise-card_title {
+  font-size: 16px;
   font-weight: 500;
   color: var(--section-text-color);
 }
@@ -1142,7 +1143,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/site-background.gif")
+  background: url("../assets/img/site-background.webp")
     center / cover no-repeat;
   background-size: auto;
   opacity: 1;
@@ -1306,7 +1307,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/site-background.gif")
+  background: url("../assets/img/site-background.webp")
     center / cover no-repeat;
   background-size: auto;
   opacity: 1;
@@ -1356,6 +1357,10 @@
   color: #3a3935;
   font-size: 10px;
   font-weight: 600;
+}
+
+.testimonial-card__avatar img {
+  height: auto;
 }
 
 .testimonial-card__author-info {

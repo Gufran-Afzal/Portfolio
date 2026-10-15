@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Susanna Falken — Store Redesign case | Ghufran Afzal</title>
+<meta name="description" content="A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Susanna Falken — Store Redesign case | Ghufran Afzal">
+<meta property="og:description" content="A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.">
+<meta name="twitter:card" content="summary"><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link" aria-current="page">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link" aria-current="page">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link" aria-current="page">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <main id="main">
+    <article class="detail">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">Susanna Falken</span></nav>
+        <header class="detail-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Store Redesign</span>
+          <h1 class="detail-head__heading" data-animate="fade-up">Susanna Falken</h1>
+          <p class="detail-head__text" data-animate="fade-up">A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.</p>
+          <div class="detail-head__actions" data-animate="fade-up">
+            
+            <a class="btn btn--secondary" href="../contact.html">Start a similar project</a>
+          </div>
+        </header>
+        <div class="work-media work-media--hero" style="--accent:#e7e3ee"><img class="work-media__logo" src="../assets/brands/susanna-falken.svg" alt="" loading="eager" decoding="async"></div>
+        <dl class="detail-meta">
+          <div><dt>Client</dt><dd>Susanna Falken</dd></div>
+          <div><dt>Type</dt><dd>Store Redesign</dd></div>
+          <div><dt>Platform</dt><dd>Shopify</dd></div>
+          
+        </dl>
+        <div class="detail-layout">
+          <aside class="detail-aside">
+            <div class="aside-card"><h2>Services</h2><ul><li>UI/UX design</li><li>Theme customization</li><li>Responsive design</li></ul></div>
+            <div class="aside-card"><h2>Stack</h2><ul class="chips"><li>Shopify</li><li>Liquid</li><li>JavaScript</li><li>CSS</li></ul></div>
+          </aside>
+          <div class="prose">
+            <section class="prose-block"><h2>Overview</h2><p>Susanna Falken already had a working jewellery store, but the design no longer matched where the brand was heading. The goal was a considered redesign, not a rebuild from zero: keep what worked, rework what did not.</p></section>
+            <section class="prose-block"><h2>The challenge</h2><p>Navigation and product pages had grown cluttered over time, which made browsing feel heavier than the products deserved.</p></section>
+            <section class="prose-block"><h2>The solution</h2><p>I simplified the information hierarchy, refined the typography and spacing, and reworked the collection and product templates so the imagery leads and the interface gets out of the way.</p></section>
+            <section class="prose-block"><h2>What I delivered</h2><ul><li>Redesigned collection and product templates</li><li>Simplified navigation</li><li>Typography and spacing system</li><li>Mobile-first QA across devices</li></ul></section>
+            
+          </div>
+        </div>
+        <section class="related"><h2 class="related__heading">Related reading</h2><div class="post-grid"><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload cart drawer with the section rendering api how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload cart drawer with the Section Rendering API</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card" data-item data-category="performance" data-search="responsive shopify images with image_tag, done properly stop shipping one giant image to every device. a practical pattern for widths, sizes and loading priority in liquid. images liquid core web vitals performance">
+          <div class="post-card__top"><span class="pill">Performance</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/responsive-images-with-image-tag.html">Responsive Shopify images with image_tag, done properly</a></h3>
+          <p class="post-card__text">Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.</p>
+          <div class="post-card__foot"><time datetime="2026-09-12">Sep 12, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+        <nav class="detail-nav" aria-label="More projects">
+          <a href="patrice.html" class="detail-nav__item"><span>Previous project</span><strong>Patrice Fransez</strong></a>
+          <a href="sr-beauty.html" class="detail-nav__item detail-nav__item--next"><span>Next project</span><strong>SR Beauty</strong></a>
+        </nav>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>

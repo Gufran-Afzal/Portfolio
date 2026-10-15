@@ -305,7 +305,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/img/site-background.gif")
+  background: url("../assets/img/site-background.webp")
     center / cover no-repeat;
   opacity: 0.6;
   transition: opacity 0.5s ease;

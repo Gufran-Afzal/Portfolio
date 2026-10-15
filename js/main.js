@@ -36,6 +36,13 @@ updateGhostState();
 // --- Shared mobile popup menu, triggerable from either header ---
 function openMenu() {
   menuOpen = true;
+  // move focus into the dialog so keyboard / screen-reader users land in it
+  // (short delay: the overlay is still visibility:hidden on the first frame of its fade-in)
+  setTimeout(function () {
+    if (!menuOpen) return;
+    var first = overlay.querySelector('.header_mobile-link');
+    if (first) first.focus();
+  }, 60);
   overlay.classList.add('header_mobile-overlay--open');
   toggles.forEach((btn) => {
     btn.classList.add('header_toggle--active');
@@ -59,7 +66,22 @@ toggles.forEach((btn) => {
 });
 overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && menuOpen) closeMenu();
+  if (!menuOpen) return;
+  if (e.key === 'Escape') {
+    // return focus to whichever toggle is actually visible
+    const visible = Array.from(toggles).find((b) => b.offsetParent !== null);
+    closeMenu(visible);
+    return;
+  }
+  // minimal focus trap: aria-modal promises focus stays inside the dialog
+  if (e.key === 'Tab') {
+    const f = overlay.querySelectorAll('a[href]');
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!overlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  }
 });
 mobileLinks.forEach((link) => link.addEventListener('click', () => closeMenu()));
 window.addEventListener('resize', () => {
@@ -176,6 +198,13 @@ window.addEventListener('resize', () => {
   }
  
   var groups = document.querySelectorAll('[data-animate-group]');
+
+  // Very old browsers / privacy tools without IntersectionObserver: show everything.
+  if (!('IntersectionObserver' in window)) {
+    groups.forEach(instantReveal);
+    return;
+  }
+
   groups.forEach(function (group) {
     var rawThreshold = parseFloat(group.getAttribute('data-animate-threshold') || '0.3');
 

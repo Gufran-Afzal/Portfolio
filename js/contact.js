@@ -225,31 +225,51 @@
     setLoading(true);
 
     /* 4. Submit to Formspree asynchronously — visitor never leaves the page.
-          Strategy: show success as long as Formspree responds with anything.
-          Only show an error on a full network failure (no internet / DNS down).
-          Formspree queues submissions even before the endpoint is activated,
-          so an HTTP error from Formspree still means data was received. */
-    fetch('https://formspree.io/f/mwpqjbqo', {
+          IMPORTANT: only an HTTP 2xx counts as success. (The previous version
+          showed "Message sent!" for ANY response, including 4xx/5xx, which
+          silently loses leads if the endpoint is misconfigured.) */
+    fetch(form.getAttribute('action') || 'https://formspree.io/f/mwpqjbqo', {
       method: 'POST',
       body: new FormData(form),
-      headers: {
-        'Accept': 'application/json'
-      }
+      headers: { 'Accept': 'application/json' }
     })
-    .then(function () {
-      /* Formspree responded — treat as success regardless of HTTP status.
-         The endpoint will forward the email once your Formspree account
-         is activated (check your inbox for the confirmation link). */
-      setLoading(false);
-      form.reset();
-      clearAllFieldErrors();
-      showSuccess();
+    .then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        setLoading(false);
+
+        if (res.ok) {
+          form.reset();
+          clearAllFieldErrors();
+          showSuccess();
+          return;
+        }
+
+        /* Formspree returns { errors: [{ field, message }] } on validation failures */
+        var shown = false;
+        if (data && Array.isArray(data.errors)) {
+          data.errors.forEach(function (err) {
+            if (err.field && fields[err.field]) {
+              showFieldError(err.field, err.message || 'Please check this field.');
+              shown = true;
+            }
+          });
+        }
+        if (shown) {
+          var firstBad = form.querySelector('.is-invalid');
+          if (firstBad) firstBad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          showGlobalError(
+            'Your message could not be sent (error ' + res.status + '). ' +
+            'Please try again, or email me directly at gufranafzal54@gmail.com.'
+          );
+        }
+      });
     })
     .catch(function () {
-      /* Only reaches here on a true network failure (offline, DNS, etc.) */
+      /* True network failure (offline, DNS, blocked request) */
       setLoading(false);
       showGlobalError(
-        'Unable to send your message. Please check your internet connection and try again.'
+        'Unable to send your message. Please check your connection, or email me directly at gufranafzal54@gmail.com.'
       );
     });
   });

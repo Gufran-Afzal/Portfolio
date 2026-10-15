@@ -3,37 +3,41 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio - Ghufran Afzal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="icon" type="image/png" href="./assets/svg/G Icon.svg">
+<!-- @seo --><title>Contact | Ghufran Afzal</title>
+<meta name="description" content="Have a Shopify project in mind? Share a few details and I'll get back to you within 24 hours.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact | Ghufran Afzal">
+<meta property="og:description" content="Have a Shopify project in mind? Share a few details and I'll get back to you within 24 hours.">
+<meta name="twitter:card" content="summary"><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="./assets/svg/g-icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
 <link rel="stylesheet" href="./css/main.css">
 <link rel="stylesheet" href="./css/contact.css">
 </head>
 <body>
-  <!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="header" id="mainHeader">
     <div class="container">
       <div class="header_wrapper">
-        <a href="./index.html" class="header_logo">
-          <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+        <a href="./index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="./assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
         </a>
         <nav class="header_nav" aria-label="Primary">
           <ul class="header_nav-list">
-            <li><a href="./index.html" class="header_nav-link">Home</a></li>
-            <li><a href="./about-us.html" class="header_nav-link">About</a></li>
-            <li><a href="#" class="header_nav-link">Projects</a></li>
-            <li><a href="#" class="header_nav-link">Articles</a></li>
-            <li><a href="./contact.html" class="header_nav-link">Contact</a></li>
+          <li><a href="./index.html" class="header_nav-link">Home</a></li>
+          <li><a href="./about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="./projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="./articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="./contact.html" class="header_nav-link" aria-current="page">Contact</a></li>
           </ul>
         </nav>
-        <a href="#" class="header_cta">
-          Let's talk
-          <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
+        <a href="./contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
           <span class="header_toggle-bar"></span>
           <span class="header_toggle-bar"></span>
           <span class="header_toggle-bar"></span>
@@ -42,32 +46,27 @@
     </div>
   </header>
 
-  <!-- ============ 2) GHOST STICKY HEADER (always fixed, hidden until scrolled) ============ -->
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
   <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
     <div class="header_wrapper">
-      <a href="#" class="header_logo">
-        <img class="header_logo-icon" src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+      <a href="./index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="./assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
       </a>
-      <nav class="header_nav" aria-label="Primary">
+      <nav class="header_nav" aria-label="Primary (sticky)">
         <ul class="header_nav-list">
           <li><a href="./index.html" class="header_nav-link">Home</a></li>
           <li><a href="./about-us.html" class="header_nav-link">About</a></li>
-          <li><a href="#" class="header_nav-link">Projects</a></li>
-          <li><a href="#" class="header_nav-link">Articles</a></li>
-          <li><a href="./contact.html" class="header_nav-link">Contact</a></li>
+          <li><a href="./projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="./articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="./contact.html" class="header_nav-link" aria-current="page">Contact</a></li>
         </ul>
       </nav>
-      <a href="#" class="header_cta">
-        Let's talk
-        <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false">
-        <span class="header_toggle-bar"></span>
-        <span class="header_toggle-bar"></span>
-        <span class="header_toggle-bar"></span>
-      </button>
+      <a href="./contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
     </div>
   </header>
 
@@ -77,23 +76,18 @@
       <ul class="header_mobile-list">
         <li class="header_mobile-item"><a href="./index.html" class="header_mobile-link">Home</a></li>
         <li class="header_mobile-item"><a href="./about-us.html" class="header_mobile-link">About</a></li>
-        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Projects</a></li>
-        <li class="header_mobile-item"><a href="#" class="header_mobile-link">Articles</a></li>
-        <li class="header_mobile-item"><a href="./contact.html" class="header_mobile-link">Contact</a></li>
+        <li class="header_mobile-item"><a href="./projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="./articles.html" class="header_mobile-link">Articles</a></li>
+        <li class="header_mobile-item"><a href="./contact.html" class="header_mobile-link" aria-current="page">Contact</a></li>
       </ul>
       <div class="header_mobile-footer">
-        <a href="#" class="header_mobile-cta">
-          Let's talk
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <a href="./contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
     </div>
-  </div>
+  </div><!-- @/header -->
 
   <!-- ============ CONTACT CONTENT ============ -->
-  <main class="contact-page">
+  <main class="contact-page" id="main">
     <section class="contact-section">
       <div class="container">
 
@@ -162,7 +156,10 @@
               id="contactForm"
               novalidate
               aria-label="Contact form"
+              action="https://formspree.io/f/mwpqjbqo"
+              method="POST"
             >
+              <input type="hidden" name="_subject" value="New project enquiry — ghufran portfolio">
               <!-- Honeypot (hidden from humans, catches bots) -->
               <div class="contact-form_honeypot" aria-hidden="true">
                 <label for="_website">Website</label>
@@ -216,11 +213,12 @@
                     aria-describedby="cf-project-type-error"
                   >
                     <option value="" disabled selected>Select...</option>
-                    <option value="Website">Website</option>
-                    <option value="Web Application">Web Application</option>
-                    <option value="UI/UX Design">UI/UX Design</option>
-                    <option value="Branding">Branding</option>
-                    <option value="Development">Development</option>
+                    <option value="Custom Shopify store">Custom Shopify store</option>
+                    <option value="Theme customization">Theme customization</option>
+                    <option value="Store redesign / CRO">Store redesign / CRO</option>
+                    <option value="Speed &amp; performance">Speed &amp; performance</option>
+                    <option value="App / integration">App / integration</option>
+                    <option value="Ongoing support">Ongoing support</option>
                     <option value="Other">Other</option>
                   </select>
                   <svg class="contact-form_select-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -349,71 +347,38 @@
     </section>
   </main>
 
-	<footer class="footer">
+	<!-- @footer --><footer class="footer">
     <div class="container">
       <div class="footer__top-wrapper">
         <div class="footer__left">
           <div class="footer__logo">
-            <img src="./assets/svg/Ghufran Afzal Logo.svg" alt="Logo">
+            <img src="./assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
           </div>
           <div class="footer__text">
             <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
           </div>
         </div>
         <div class="footer__right">
-          <div class="footer__pages-menu">
+          <nav class="footer__pages-menu" aria-label="Footer">
             <strong>Pages</strong>
             <ul class="footer__menu">
-              <li class="footer__menu-item">
-                <a href="./index.html" class="footer__menu-link">Home</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="./about-us.html" class="footer__menu-link">About</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Services</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Projects</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="./contact.html" class="footer__menu-link">Contact</a>
-              </li>
+              <li class="footer__menu-item"><a href="./index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="./about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="./index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="./projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="./articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="./contact.html" class="footer__menu-link">Contact</a></li>
             </ul>
-          </div>
-          <div class="footer__social-menu">
-            <strong>Social</strong>
-            <ul class="footer__menu">
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Instagram</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Facebook</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Tiktok</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Linkedin</a>
-              </li>
-              <li class="footer__menu-item">
-                <a href="#" class="footer__menu-link">Youtube</a>
-              </li>
-            </ul>
-          </div>
+          </nav>
+          
         </div>
       </div>
       <div class="footer__bottom-wrapper">
-        <p class="footer__copyright">
-          © 2026 Ghufran Afzal. All rights reserved.
-        </p>
-
-        <p class="footer__credit">
-          Designed & built by Ghufran Afzal.
-        </p>
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
       </div>
     </div>
-  </footer>
+  </footer><!-- @/footer -->
 
 <script src="./js/main.js"></script>
 <script src="./js/contact.js"></script>

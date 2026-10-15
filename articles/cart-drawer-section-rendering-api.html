@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Case study: a no-reload cart drawer with the Section Rendering API | Ghufran Afzal</title>
+<meta name="description" content="How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case study: a no-reload cart drawer with the Section Rendering API | Ghufran Afzal">
+<meta property="og:description" content="How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Case study: a no-reload cart drawer with the Section Rendering API","description":"How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.","datePublished":"2026-10-08","author":{"@type":"Person","name":"Ghufran Afzal"}}</script><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link" aria-current="page">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <div class="read-progress" data-read-progress aria-hidden="true"></div>
+  <main id="main">
+    <article class="article">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../articles.html">Articles</a><span aria-hidden="true">/</span><span aria-current="page">Case studies</span></nav>
+        <header class="article-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Case studies</span>
+          <h1 class="article-head__heading" data-animate="fade-up">Case study: a no-reload cart drawer with the Section Rendering API</h1>
+          <p class="article-head__text" data-animate="fade-up">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <p class="article-head__meta" data-animate="fade-up"><span>By Ghufran Afzal</span><span aria-hidden="true">·</span><time datetime="2026-10-08">Oct 8, 2026</time><span aria-hidden="true">·</span><span>2 min read</span></p>
+        </header>
+        <nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#the-problem">The problem</a></li><li><a href="#the-approach">The approach</a></li><li><a href="#the-code">The code</a></li><li><a href="#details-that-matter">Details that matter</a></li><li><a href="#why-i-like-this-pattern">Why I like this pattern</a></li></ol></nav>
+        <div class="prose prose--article">
+<p>A cart drawer is one of the most common feature requests on Shopify stores, and one of the easiest to get subtly wrong. This breakdown walks through the approach I reach for first: let Shopify render the drawer, and let JavaScript only swap it in.</p>
+<h2 id="the-problem">The problem</h2>
+<p>The classic shortcut is to fetch the cart as JSON and rebuild the drawer in JavaScript. It works on day one. Then someone adds a discount line, a subscription, or a gift note, and now the cart markup lives in two places: Liquid and a JS template. They drift apart, and bugs appear in whichever copy nobody remembers.</p>
+<h2 id="the-approach">The approach</h2>
+<p>The Section Rendering API lets a cart request return freshly rendered section HTML in the same response. The drawer stays a normal Liquid section, so there is one source of truth for its markup.</p>
+<ol><li>Create <code>sections/cart-drawer.liquid</code> with a wrapper element that has a stable id.</li><li>Request that section when adding to the cart.</li><li>Parse the returned HTML and replace the existing drawer.</li></ol>
+<h2 id="the-code">The code</h2>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">js</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>async function addToCart(variantId, quantity = 1) {
+  const response = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      items: [{ id: variantId, quantity }],
+      sections: 'cart-drawer',
+      sections_url: window.location.pathname,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    // e.g. 422 when the requested quantity is not available
+    throw new Error(data.description || data.message || 'Could not add to cart');
+  }
+
+  const incoming = new DOMParser()
+    .parseFromString(data.sections['cart-drawer'], 'text/html')
+    .querySelector('#CartDrawer');
+
+  document.querySelector('#CartDrawer').replaceWith(incoming);
+}</code></pre></div>
+<h2 id="details-that-matter">Details that matter</h2>
+<ul><li><strong>Handle failure visibly.</strong> <code>add.js</code> returns an error response when stock runs out. Show that message in the drawer instead of failing silently.</li><li><strong>Keep focus sane.</strong> When the drawer opens, move focus into it, trap it while open, and return it to the trigger on close.</li><li><strong>Update the cart count too.</strong> Add the header's cart-count section to the <code>sections</code> parameter (comma separated) and swap it the same way.</li><li><strong>Disable the button while the request runs.</strong> It prevents accidental double adds on slow connections.</li></ul>
+<h2 id="why-i-like-this-pattern">Why I like this pattern</h2>
+<p>The drawer is just Liquid, so the merchant's team and any future developer can change it the normal way. The JavaScript stays small, and there is no second template to keep in sync.</p>
+        </div>
+        <ul class="chips chips--tags" aria-label="Tags"><li>Cart</li><li>JavaScript</li><li>Liquid</li></ul>
+        <aside class="author-box">
+          <img src="../assets/img/hero-portrait.webp" alt="" width="64" height="64" loading="lazy">
+          <div><strong>Ghufran Afzal</strong><p>Shopify developer building fast, conversion-focused storefronts. <a href="../contact.html">Work with me</a>.</p></div>
+        </aside>
+      </div>
+      <div class="container">
+        <section class="related"><h2 class="related__heading">Keep reading</h2><div class="post-grid"><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: auditing a slow shopify theme, step by step the repeatable order i follow when a store feels slow, so the biggest wins come first and every change is measured. performance audit theme case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/auditing-a-slow-shopify-theme.html">Case study: auditing a slow Shopify theme, step by step</a></h3>
+          <p class="post-card__text">The repeatable order I follow when a store feels slow, so the biggest wins come first and every change is measured.</p>
+          <div class="post-card__foot"><time datetime="2026-09-24">Sep 24, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card" data-item data-category="performance" data-search="responsive shopify images with image_tag, done properly stop shipping one giant image to every device. a practical pattern for widths, sizes and loading priority in liquid. images liquid core web vitals performance">
+          <div class="post-card__top"><span class="pill">Performance</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/responsive-images-with-image-tag.html">Responsive Shopify images with image_tag, done properly</a></h3>
+          <p class="post-card__text">Stop shipping one giant image to every device. A practical pattern for widths, sizes and loading priority in Liquid.</p>
+          <div class="post-card__foot"><time datetime="2026-09-12">Sep 12, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+<script src="../js/article.js"></script>
+</body>
+</html>
