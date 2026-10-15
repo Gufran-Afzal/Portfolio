@@ -107,26 +107,33 @@
 <h2 id="presets-make-it-addable">Presets: make it addable</h2>
 <p>Without a preset, a section cannot be added from the editor's &quot;Add section&quot; menu. It is a small detail that is easy to forget.</p>
 <h2 id="a-compact-example">A compact example</h2>
-{% raw %}
 <div class="code-block" data-code-block>
   <div class="code-block__bar">
     <span class="code-block__lang">liquid</span>
     <button type="button" class="code-block__copy" data-copy>Copy</button>
   </div>
-  <pre><code>&lt;section class="featured" {{ section.shopify_attributes }}&gt;
-  {% for block in section.blocks %}
-    &lt;h2 {{ block.shopify_attributes }}&gt;{{ block.settings.text }}&lt;/h2&gt;
-  {% endfor %}
+  <pre><code>&lt;section class="featured" &#123;&#123; section.shopify_attributes &#125;&#125;&gt;
+  &#123;% for block in section.blocks %&#125;
+    &lt;h2 &#123;&#123; block.shopify_attributes &#125;&#125;&gt;&#123;&#123; block.settings.text &#125;&#125;&lt;/h2&gt;
+  &#123;% endfor %&#125;
 &lt;/section&gt;
 
-{% schema %}
+&#123;% schema %&#125;
 {
   "name": "Featured collection",
   "settings": [
-    { "type": "collection", "id": "collection", "label": "Collection" },
     {
-      "type": "range", "id": "products_to_show",
-      "min": 2, "max": 12, "step": 1, "default": 4,
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
       "label": "Products to show"
     }
   ],
@@ -136,15 +143,23 @@
       "name": "Heading",
       "limit": 1,
       "settings": [
-        { "type": "text", "id": "text", "label": "Text", "default": "Featured" }
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Featured"
+        }
       ]
     }
   ],
-  "presets": [{ "name": "Featured collection" }]
+  "presets": [
+    {
+      "name": "Featured collection"
+    }
+  ]
 }
-{% endschema %}</code></pre>
+&#123;% endschema %&#125;</code></pre>
 </div>
-{% endraw %}
 <h2 id="habits-worth-keeping">Habits worth keeping</h2>
 <ul><li><strong>Output <code>shopify_attributes</code></strong> on the section and its blocks, so the editor can highlight them when selected.</li><li><strong>Give every setting a sensible default.</strong> An empty section looks broken.</li><li><strong>Use ranges and selects over free text</strong> when the options are limited.</li><li><strong>Keep settings few and meaningful.</strong> Every extra option is something the merchant has to understand.</li></ul>
 <p>Designing the schema is designing the merchant's experience. It deserves the same care as the visual design.</p>
