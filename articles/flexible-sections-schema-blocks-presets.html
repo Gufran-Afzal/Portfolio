@@ -107,13 +107,13 @@
 <h2 id="presets-make-it-addable">Presets: make it addable</h2>
 <p>Without a preset, a section cannot be added from the editor's &quot;Add section&quot; menu. It is a small detail that is easy to forget.</p>
 <h2 id="a-compact-example">A compact example</h2>
-
+{% raw %}
 <div class="code-block" data-code-block>
   <div class="code-block__bar">
     <span class="code-block__lang">liquid</span>
     <button type="button" class="code-block__copy" data-copy>Copy</button>
   </div>
-  <pre><code>{% raw %}&lt;section class="featured" {{ section.shopify_attributes }}&gt;
+  <pre><code>&lt;section class="featured" {{ section.shopify_attributes }}&gt;
   {% for block in section.blocks %}
     &lt;h2 {{ block.shopify_attributes }}&gt;{{ block.settings.text }}&lt;/h2&gt;
   {% endfor %}
@@ -142,9 +142,9 @@
   ],
   "presets": [{ "name": "Featured collection" }]
 }
-{% endschema %}{% endraw %}</code></pre>
+{% endschema %}</code></pre>
 </div>
-
+{% endraw %}
 <h2 id="habits-worth-keeping">Habits worth keeping</h2>
 <ul><li><strong>Output <code>shopify_attributes</code></strong> on the section and its blocks, so the editor can highlight them when selected.</li><li><strong>Give every setting a sensible default.</strong> An empty section looks broken.</li><li><strong>Use ranges and selects over free text</strong> when the options are limited.</li><li><strong>Keep settings few and meaningful.</strong> Every extra option is something the merchant has to understand.</li></ul>
 <p>Designing the schema is designing the merchant's experience. It deserves the same care as the visual design.</p>
