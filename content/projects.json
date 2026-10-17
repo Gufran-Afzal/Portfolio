@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "patrice",
+    "title": "Patrice Fransez",
+    "category": "Custom Theme",
+    "featured": true,
+    "accent": "#ebe6df",
+    "logo": "assets/brands/patrice.png",
+    "cover": "",
+    "liveUrl": "",
+    "year": "",
+    "summary": "A custom Shopify theme built around the brand's identity, with flexible sections the team can rearrange without a developer.",
+    "services": [
+      "Theme development",
+      "Custom sections",
+      "Responsive design"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "CSS"
+    ],
+    "overview": "Patrice Fransez needed a storefront that looked and felt like the brand rather than a re-skinned template. I designed and developed the theme from the ground up, keeping the codebase small and the theme editor approachable for the people running the store day to day.",
+    "challenge": "Off-the-shelf themes forced the catalogue into layouts that did not suit the products or the brand's tone, and every change meant asking a developer.",
+    "solution": "I built a lightweight custom theme with reusable, block-based sections, so the team can compose and reorder pages directly in the theme editor. Typography, spacing and components follow one consistent system across every template.",
+    "deliverables": [
+      "Custom theme from scratch",
+      "Editor-friendly sections and blocks",
+      "Responsive layouts for every template",
+      "Handover walkthrough for the team"
+    ],
+    "results": []
+  },
+  {
+    "slug": "susanna-falken",
+    "title": "Susanna Falken",
+    "category": "Store Redesign",
+    "featured": true,
+    "accent": "#e7e3ee",
+    "logo": "assets/brands/susanna-falken.svg",
+    "cover": "",
+    "liveUrl": "",
+    "year": "",
+    "summary": "A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.",
+    "services": [
+      "UI/UX design",
+      "Theme customization",
+      "Responsive design"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "CSS"
+    ],
+    "overview": "Susanna Falken already had a working jewellery store, but the design no longer matched where the brand was heading. The goal was a considered redesign, not a rebuild from zero: keep what worked, rework what did not.",
+    "challenge": "Navigation and product pages had grown cluttered over time, which made browsing feel heavier than the products deserved.",
+    "solution": "I simplified the information hierarchy, refined the typography and spacing, and reworked the collection and product templates so the imagery leads and the interface gets out of the way.",
+    "deliverables": [
+      "Redesigned collection and product templates",
+      "Simplified navigation",
+      "Typography and spacing system",
+      "Mobile-first QA across devices"
+    ],
+    "results": []
+  },
+  {
+    "slug": "sr-beauty",
+    "title": "SR Beauty",
+    "category": "Performance & CRO",
+    "featured": true,
+    "accent": "#f0e3e3",
+    "logo": "assets/brands/sr-beauty.svg",
+    "cover": "",
+    "liveUrl": "",
+    "year": "",
+    "summary": "Speed and conversion improvements across the storefront, from image delivery to a smoother path from product to checkout.",
+    "services": [
+      "Performance optimization",
+      "Conversion-focused UX",
+      "Theme customization"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "Lighthouse"
+    ],
+    "overview": "For the SR Beauty shop the brief was practical: make the store faster and make buying easier. I audited the existing theme, prioritised the changes with the best return, and shipped them in small, testable steps.",
+    "challenge": "Heavy images and unnecessary scripts slowed pages down, and a few friction points on the product page made the path to purchase longer than it needed to be.",
+    "solution": "I optimised image delivery, removed unused code, deferred non-critical scripts, and tightened the product page so price, variants and the add-to-cart action are clear at a glance on mobile.",
+    "deliverables": [
+      "Theme performance audit",
+      "Responsive image delivery",
+      "Script and CSS clean-up",
+      "Product page UX refinements"
+    ],
+    "results": []
+  },
+  {
+    "slug": "romaan",
+    "title": "ROMAAN",
+    "category": "Custom Theme",
+    "featured": true,
+    "accent": "#e1e8e5",
+    "logo": "assets/brands/romaan.svg",
+    "cover": "",
+    "liveUrl": "",
+    "year": "",
+    "summary": "A bespoke fragrance storefront with custom sections and a layout system designed to scale as the catalogue grows.",
+    "services": [
+      "Theme development",
+      "Custom sections",
+      "UI/UX design"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "CSS"
+    ],
+    "overview": "ROMAAN, a fragrance brand, wanted a storefront with its own character and room to grow. I built a custom theme around a small set of well-designed sections that can be recombined as new collections and campaigns launch.",
+    "challenge": "The brand needed distinctive layouts without the maintenance burden of one-off pages for every launch.",
+    "solution": "I created a modular section library with sensible settings and presets, so new pages can be assembled quickly while staying visually consistent.",
+    "deliverables": [
+      "Custom theme",
+      "Reusable section library",
+      "Responsive templates",
+      "Developer-friendly, documented code"
+    ],
+    "results": []
+  },
+  {
+    "slug": "risen",
+    "title": "Risen",
+    "category": "Integrations",
+    "featured": false,
+    "accent": "#e3e6ee",
+    "logo": "assets/brands/risen.svg",
+    "cover": "",
+    "liveUrl": "",
+    "year": "",
+    "summary": "Connecting a fragrance storefront with the tools the business relies on, while keeping the shopping experience fast.",
+    "services": [
+      "Integrations",
+      "Theme customization",
+      "Ongoing support"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "Shopify APIs"
+    ],
+    "overview": "Risen Fragrances needed its store to work smoothly with the rest of its toolset. I handled the integration work and the front-end changes needed to surface it cleanly to customers.",
+    "challenge": "Third-party tools can easily slow a storefront down or leave the experience feeling stitched together.",
+    "solution": "I integrated the required services with care for performance, loading scripts only where they are needed and keeping the interface consistent with the rest of the theme.",
+    "deliverables": [
+      "Third-party integrations",
+      "Front-end integration work",
+      "Performance-conscious script loading",
+      "Post-launch support"
+    ],
+    "results": []
+  }
+]

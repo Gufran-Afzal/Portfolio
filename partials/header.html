@@ -1,0 +1,66 @@
+<!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="{{root}}index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="{{root}}assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="{{root}}index.html" class="header_nav-link" data-nav="home">Home</a></li>
+          <li><a href="{{root}}about-us.html" class="header_nav-link" data-nav="about">About</a></li>
+          <li><a href="{{root}}projects.html" class="header_nav-link" data-nav="projects">Projects</a></li>
+          <li><a href="{{root}}articles.html" class="header_nav-link" data-nav="articles">Articles</a></li>
+          <li><a href="{{root}}contact.html" class="header_nav-link" data-nav="contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="{{root}}contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="{{root}}index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="{{root}}assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="{{root}}index.html" class="header_nav-link" data-nav="home">Home</a></li>
+          <li><a href="{{root}}about-us.html" class="header_nav-link" data-nav="about">About</a></li>
+          <li><a href="{{root}}projects.html" class="header_nav-link" data-nav="projects">Projects</a></li>
+          <li><a href="{{root}}articles.html" class="header_nav-link" data-nav="articles">Articles</a></li>
+          <li><a href="{{root}}contact.html" class="header_nav-link" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="{{root}}contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="{{root}}index.html" class="header_mobile-link" data-nav="home">Home</a></li>
+        <li class="header_mobile-item"><a href="{{root}}about-us.html" class="header_mobile-link" data-nav="about">About</a></li>
+        <li class="header_mobile-item"><a href="{{root}}projects.html" class="header_mobile-link" data-nav="projects">Projects</a></li>
+        <li class="header_mobile-item"><a href="{{root}}articles.html" class="header_mobile-link" data-nav="articles">Articles</a></li>
+        <li class="header_mobile-item"><a href="{{root}}contact.html" class="header_mobile-link" data-nav="contact">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="{{root}}contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>

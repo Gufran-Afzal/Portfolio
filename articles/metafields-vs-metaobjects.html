@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Metafields vs metaobjects: which one should you use? | Ghufran Afzal</title>
+<meta name="description" content="Both store custom data. They solve different problems, and choosing the wrong one makes a store harder to manage.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metafields vs metaobjects: which one should you use? | Ghufran Afzal">
+<meta property="og:description" content="Both store custom data. They solve different problems, and choosing the wrong one makes a store harder to manage.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Metafields vs metaobjects: which one should you use?","description":"Both store custom data. They solve different problems, and choosing the wrong one makes a store harder to manage.","datePublished":"2026-08-14","author":{"@type":"Person","name":"Ghufran Afzal"}}</script><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../index.html" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../index.html" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../index.html" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link" aria-current="page">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <div class="read-progress" data-read-progress aria-hidden="true"></div>
+  <main id="main">
+    <article class="article">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../articles.html">Articles</a><span aria-hidden="true">/</span><span aria-current="page">Liquid &amp; Themes</span></nav>
+        <header class="article-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Liquid &amp; Themes</span>
+          <h1 class="article-head__heading" data-animate="fade-up">Metafields vs metaobjects: which one should you use?</h1>
+          <p class="article-head__text" data-animate="fade-up">Both store custom data. They solve different problems, and choosing the wrong one makes a store harder to manage.</p>
+          <p class="article-head__meta" data-animate="fade-up"><span>By Ghufran Afzal</span><span aria-hidden="true">·</span><time datetime="2026-08-14">Aug 14, 2026</time><span aria-hidden="true">·</span><span>2 min read</span></p>
+        </header>
+        <nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#metafields-extra-data-on-something-that-already-exists">Metafields: extra data on something that already exists</a></li><li><a href="#metaobjects-your-own-structured-content">Metaobjects: your own structured content</a></li><li><a href="#choosing-between-them">Choosing between them</a></li><li><a href="#a-practical-example">A practical example</a></li><li><a href="#tips">Tips</a></li></ol></nav>
+        <div class="prose prose--article">
+<p>Shopify gives you two ways to store custom content, and they are easy to mix up. A simple rule of thumb gets you most of the way there.</p>
+<h2 id="metafields-extra-data-on-something-that-already-exists">Metafields: extra data on something that already exists</h2>
+<p>A metafield adds a field to an existing resource: a product, variant, collection, customer or the shop itself. Think care instructions on a product, or a size chart note on a variant.</p>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{% if product.metafields.custom.care_instructions %}
+  &lt;p&gt;{{ product.metafields.custom.care_instructions.value }}&lt;/p&gt;
+{% endif %}</code></pre></div>
+<h2 id="metaobjects-your-own-structured-content">Metaobjects: your own structured content</h2>
+<p>A metaobject is a record type you define yourself, with its own fields. Examples are a designer profile, an ingredient, a store location or a size guide. Records are created once and can be reused in many places, typically by referencing them from a metafield.</p>
+<h2 id="choosing-between-them">Choosing between them</h2>
+<ul><li>Is the data a single attribute of one product or collection? Use a <strong>metafield</strong>.</li><li>Is it a thing in its own right that several products share? Use a <strong>metaobject</strong>.</li><li>Will the merchant want to edit it in one place and have every page update? Use a <strong>metaobject</strong>.</li></ul>
+<h2 id="a-practical-example">A practical example</h2>
+<p>An &quot;ingredients&quot; list shared across many products is a good fit for metaobjects: each ingredient is defined once with a name, description and image. Each product then references the ingredients it contains. Change the description in one place, and every product page reflects it.</p>
+<h2 id="tips">Tips</h2>
+<ul><li>Name definitions clearly. Merchants will see them in the admin.</li><li>Pick the right field type up front, since it affects validation and how the value renders.</li><li>Check Shopify's documentation for the exact Liquid syntax for each field type before building.</li></ul>
+<p>Modelling data well early saves a lot of rework later, and gives the merchant a cleaner admin to work in.</p>
+        </div>
+        <ul class="chips chips--tags" aria-label="Tags"><li>Metafields</li><li>Metaobjects</li><li>Data modelling</li></ul>
+        <aside class="author-box">
+          <img src="../assets/img/hero-portrait.webp" alt="" width="64" height="64" loading="lazy">
+          <div><strong>Ghufran Afzal</strong><p>Shopify developer building fast, conversion-focused storefronts. <a href="../contact.html">Work with me</a>.</p></div>
+        </aside>
+      </div>
+      <div class="container">
+        <section class="related"><h2 class="related__heading">Keep reading</h2><div class="post-grid"><article class="post-card" data-item data-category="liquid-and-themes" data-search="building flexible theme sections: schema, blocks and presets the three parts of a section schema that decide whether a merchant can actually use your work without calling you. sections theme editor liquid liquid &amp; themes">
+          <div class="post-card__top"><span class="pill">Liquid &amp; Themes</span><span class="post-card__read">1 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/flexible-sections-schema-blocks-presets.html">Building flexible theme sections: schema, blocks and presets</a></h3>
+          <p class="post-card__text">The three parts of a section schema that decide whether a merchant can actually use your work without calling you.</p>
+          <div class="post-card__foot"><time datetime="2026-08-29">Aug 29, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload cart drawer with the section rendering api how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload cart drawer with the Section Rendering API</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../index.html" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../index.html#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+<script src="../js/article.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "Ghufran Afzal",
+  "siteUrl": "",
+  "email": "gufranafzal54@gmail.com",
+  "socials": [
+    { "label": "LinkedIn",  "url": "" },
+    { "label": "GitHub",    "url": "" },
+    { "label": "Upwork",    "url": "" },
+    { "label": "Instagram", "url": "" }
+  ]
+}
