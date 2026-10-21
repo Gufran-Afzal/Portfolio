@@ -104,9 +104,9 @@
 <p>Shopify gives you two ways to store custom content, and they are easy to mix up. A simple rule of thumb gets you most of the way there.</p>
 <h2 id="metafields-extra-data-on-something-that-already-exists">Metafields: extra data on something that already exists</h2>
 <p>A metafield adds a field to an existing resource: a product, variant, collection, customer or the shop itself. Think care instructions on a product, or a size chart note on a variant.</p>
-<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{% if product.metafields.custom.care_instructions %}
-  &lt;p&gt;{{ product.metafields.custom.care_instructions.value }}&lt;/p&gt;
-{% endif %}</code></pre></div>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>&#123;% if product.metafields.custom.care_instructions %}
+  &lt;p&gt;&#123;&#123; product.metafields.custom.care_instructions.value }}&lt;/p&gt;
+&#123;% endif %}</code></pre></div>
 <h2 id="metaobjects-your-own-structured-content">Metaobjects: your own structured content</h2>
 <p>A metaobject is a record type you define yourself, with its own fields. Examples are a designer profile, an ingredient, a store location or a size guide. Records are created once and can be reused in many places, typically by referencing them from a metafield.</p>
 <h2 id="choosing-between-them">Choosing between them</h2>

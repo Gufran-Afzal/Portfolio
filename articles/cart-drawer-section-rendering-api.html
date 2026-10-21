@@ -108,12 +108,12 @@
 <p>The Section Rendering API lets a cart request return freshly rendered section HTML in the same response. The drawer stays a normal Liquid section, so there is one source of truth for its markup.</p>
 <ol><li>Create <code>sections/cart-drawer.liquid</code> with a wrapper element that has a stable id.</li><li>Request that section when adding to the cart.</li><li>Parse the returned HTML and replace the existing drawer.</li></ol>
 <h2 id="the-code">The code</h2>
-<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">js</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>async function addToCart(variantId, quantity = 1) {
-  const response = await fetch(`${window.Shopify.routes.root}cart/add.js`, {
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">js</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>async function addToCart(variantId, quantity = 1) &#123;
+  const response = await fetch(`$&#123;window.Shopify.routes.root}cart/add.js`, &#123;
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({
-      items: [{ id: variantId, quantity }],
+    headers: &#123; 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(&#123;
+      items: [&#123; id: variantId, quantity }],
       sections: 'cart-drawer',
       sections_url: window.location.pathname,
     }),
@@ -121,7 +121,7 @@
 
   const data = await response.json();
 
-  if (!response.ok) {
+  if (!response.ok) &#123;
     // e.g. 422 when the requested quantity is not available
     throw new Error(data.description || data.message || 'Could not add to cart');
   }

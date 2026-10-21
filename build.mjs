@@ -36,7 +36,9 @@ const PROJECT_CATEGORIES = ['Custom Theme', 'Store Redesign', 'Performance & CRO
 const ARTICLE_CATEGORIES = ['Case studies', 'Liquid & Themes', 'Performance', 'Apps & Integrations'];
 
 /* ---------- helpers ---------- */
-const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// "{" is emitted as &#123; so Liquid examples in articles can never be parsed as Liquid
+// by Jekyll (GitHub Pages' default builder). Browsers render it as a normal "{".
+const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/\{/g, '&#123;');
 const slugify = (s) => String(s).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const fmtDate = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
 const rootFor = (depth) => (depth === 0 ? './' : '../'.repeat(depth));
@@ -464,6 +466,9 @@ ${a.html}
   </main>`,
   }));
 });
+
+/* ---- .nojekyll: GitHub Pages must serve these files as-is, not run them through Jekyll ---- */
+out('.nojekyll', '');
 
 /* ---- 404 ---- */
 out('404.html', page({

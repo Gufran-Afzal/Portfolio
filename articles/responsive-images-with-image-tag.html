@@ -104,7 +104,7 @@
 <p>Images are usually the heaviest part of a storefront, and the easiest place to win back speed. Shopify's <code>image_url</code> and <code>image_tag</code> filters give you almost everything you need, if you actually use their options.</p>
 <h2 id="generate-a-set-of-widths">Generate a set of widths</h2>
 <p>Instead of one fixed size, ask Shopify to output a <code>srcset</code> with several widths and tell the browser how wide the image will be displayed through <code>sizes</code>.</p>
-<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{{ product.featured_image
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>&#123;&#123; product.featured_image
   | image_url: width: 1600
   | image_tag:
       widths: '400, 600, 800, 1200, 1600',
@@ -115,7 +115,7 @@
 <p><code>sizes</code> is a description of layout, not a guess. If the image fills half the viewport on desktop and the full width on mobile, say exactly that. A wrong <code>sizes</code> value quietly makes the browser choose a file that is too large or too small.</p>
 <h2 id="treat-the-first-image-differently">Treat the first image differently</h2>
 <p>Images below the fold should load lazily. The main image at the top of the page should not, and it should be prioritised, because it is usually the Largest Contentful Paint element.</p>
-<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>{{ section.settings.hero_image
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">liquid</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>&#123;&#123; section.settings.hero_image
   | image_url: width: 1800
   | image_tag:
       widths: '800, 1200, 1800',

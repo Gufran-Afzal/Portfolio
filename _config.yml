@@ -1,0 +1,8 @@
+# Only used if GitHub Pages ever runs Jekyll (it shouldn't: see .nojekyll).
+# Keeps source/template files out of any Jekyll build.
+exclude:
+  - content
+  - partials
+  - build.mjs
+  - README.md
+  - SEO_GUIDE.md
