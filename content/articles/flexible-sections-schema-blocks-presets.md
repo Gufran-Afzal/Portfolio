@@ -22,61 +22,36 @@ Without a preset, a section cannot be added from the editor's "Add section" menu
 ## A compact example
 
 ```liquid
-A compact example
-<section class="featured" {{ "{{" }} section.shopify_attributes {{ "}}" }}>
-  {% raw %}{% for block in section.blocks %}
+<section class="featured" {{ section.shopify_attributes }}>
+  {% for block in section.blocks %}
     <h2 {{ block.shopify_attributes }}>{{ block.settings.text }}</h2>
   {% endfor %}
+</section>
 
-  {% schema %}
-  {
-    "name": "Featured collection",
-    "settings": [
-      {
-        "type": "collection",
-        "id": "collection",
-        "label": "Collection"
-      },
-      {
-        "type": "range",
-        "id": "products_to_show",
-        "min": 2,
-        "max": 12,
-        "step": 1,
-        "default": 4,
-        "label": "Products to show"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "heading",
-        "name": "Heading",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "text",
-            "label": "Text",
-            "default": "Featured"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Featured collection"
-      }
-    ]
-  }
-  {% endschema %}{% endraw %}
-
-Habits worth keeping
-Output shopify_attributes on the section and its blocks, so the editor can highlight them when selected.
-Give every setting a sensible default. An empty section looks broken.
-Use ranges and selects over free text when the options are limited.
-Keep settings few and meaningful. Every extra option is something the merchant has to understand.
-
-Designing the schema is designing the merchant's experience. It deserves the same care as the visual design.
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    {
+      "type": "range", "id": "products_to_show",
+      "min": 2, "max": 12, "step": 1, "default": 4,
+      "label": "Products to show"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Featured" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}
 ```
 
 ## Habits worth keeping

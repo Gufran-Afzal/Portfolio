@@ -12,7 +12,7 @@
         projects.html + projects/<slug>.html     (content/projects.json)
         articles.html + articles/<slug>.html     (content/articles/*.md)
         the "Selected work" section on index.html
-        404.html, and sitemap.xml + robots.txt when siteUrl is set
+        404.html, and sitemap.xml when siteUrl is set (no robots.txt: see SEO_GUIDE.md)
    3. Prints a release checklist of anything still empty.
 
    Generated pages are plain static HTML: they work without JavaScript
@@ -54,17 +54,19 @@ function socialsHtml() {
             </ul>
           </div>`;
 }
-function partial(name, depth, nav) {
+function partial(name, depth, nav, rootOverride) {
   let html = read(`partials/${name}.html`).trimEnd();
-  html = html.replace(/\{\{root\}\}/g, rootFor(depth)).replace(/\{\{year\}\}/g, YEAR).replace(/\{\{socials\}\}/g, socialsHtml());
+  html = html.replace(/\{\{root\}\}/g, rootOverride || rootFor(depth)).replace(/\{\{year\}\}/g, YEAR).replace(/\{\{socials\}\}/g, socialsHtml());
   // mark the current page in the nav, then drop the helper attribute
   html = html.replace(/<a ([^>]*?)data-nav="([a-z]+)"/g, (m, pre, key) =>
     key === nav ? `<a ${pre}aria-current="page"` : `<a ${pre.trimEnd()}`);
   return html;
 }
-function seo({ title, description, depth, file, type = 'website', extra = '' }) {
-  const full = title.includes('Ghufran') ? title : `${title} | Ghufran Afzal`;
-  const url = SITE_URL ? `${SITE_URL}/${file === 'index.html' ? '' : file}` : '';
+function seo({ title, description, depth, file, type = 'website', extra = '', noindex = false }) {
+  const withBrand = `${title} | Ghufran Afzal`;
+  // keep titles near Google's ~60-char display limit: drop the brand suffix when it would overflow
+  const full = title.includes('Ghufran') || withBrand.length > 62 ? title : withBrand;
+  const url = SITE_URL && !noindex ? `${SITE_URL}/${file === 'index.html' ? '' : file}` : '';
   return [
     `<title>${esc(full)}</title>`,
     `<meta name="description" content="${esc(description)}">`,
@@ -73,29 +75,30 @@ function seo({ title, description, depth, file, type = 'website', extra = '' }) 
     `<meta property="og:title" content="${esc(full)}">`,
     `<meta property="og:description" content="${esc(description)}">`,
     url ? `<meta property="og:url" content="${esc(url)}">` : '',
-    `<meta name="twitter:card" content="summary">`,
+    SITE_URL && site.ogImage ? `<meta property="og:image" content="${esc(SITE_URL + '/' + site.ogImage)}">` : '',
+    `<meta name="twitter:card" content="${SITE_URL && site.ogImage ? 'summary_large_image' : 'summary'}">`,
     extra,
   ].filter(Boolean).join('\n');
 }
 
 /* ---------- full page shell (generated pages) ---------- */
-function page({ file, depth, nav, title, description, css = [], js = [], main, type, seoExtra, noindex }) {
-  const root = rootFor(depth);
+function page({ file, depth, nav, title, description, css = [], js = [], main, type, seoExtra, noindex, rootOverride }) {
+  const root = rootOverride || rootFor(depth);
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- @seo -->${seo({ title, description, depth, file, type, extra: seoExtra })}${noindex ? '\n<meta name="robots" content="noindex">' : ''}<!-- @/seo -->
-<!-- @head -->${partial('head', depth, nav)}<!-- @/head -->
+<!-- @seo -->${seo({ title, description, depth, file, type, extra: seoExtra, noindex })}${noindex ? '\n<meta name="robots" content="noindex">' : ''}<!-- @/seo -->
+<!-- @head -->${partial('head', depth, nav, rootOverride)}<!-- @/head -->
 <link rel="stylesheet" href="${root}css/main.css">
 ${css.map((c) => `<link rel="stylesheet" href="${root}css/${c}.css">`).join('\n')}
 </head>
 <body>
-  <!-- @header -->${partial('header', depth, nav)}<!-- @/header -->
+  <!-- @header -->${partial('header', depth, nav, rootOverride)}<!-- @/header -->
 ${main}
 
-  <!-- @footer -->${partial('footer', depth, nav)}<!-- @/footer -->
+  <!-- @footer -->${partial('footer', depth, nav, rootOverride)}<!-- @/footer -->
 
 <script src="${root}js/main.js"></script>
 ${js.map((j) => `<script src="${root}js/${j}.js"></script>`).join('\n')}
@@ -265,6 +268,13 @@ const out = (f, s) => { write(f, s); written.push(f); };
 let home = syncMarkers('index.html', 0, 'home', {
   title: 'Ghufran Afzal | Shopify Developer & Designer',
   description: 'Shopify developer building custom, fast, conversion-focused storefronts for ambitious brands. View projects and get in touch.',
+  // Person structured data: only facts that are on the site (no invented credentials).
+  // Add "sameAs" automatically once real social URLs exist in content/site.json.
+  extra: `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Person', name: site.name, url: SITE_URL ? SITE_URL + '/' : undefined,
+    jobTitle: 'Shopify Developer', knowsAbout: ['Shopify', 'Liquid', 'Shopify theme development', 'Frontend development'],
+    ...((site.socials || []).filter((x) => x.url).length ? { sameAs: site.socials.filter((x) => x.url).map((x) => x.url) } : {}),
+  }).replace(/</g, '\\u003c')}</script>`,
 });
 const featured = projects.filter((x) => x.featured);
 const featuredHtml = `
@@ -289,18 +299,18 @@ out('index.html', home);
 
 /* ---- about + contact ---- */
 out('about-us.html', syncMarkers('about-us.html', 0, 'about', {
-  title: 'About | Ghufran Afzal',
+  title: 'About Ghufran Afzal — Shopify Developer',
   description: 'I build Shopify stores that are designed to perform. Learn about my approach, values and background in Shopify development.',
 }));
 out('contact.html', syncMarkers('contact.html', 0, 'contact', {
-  title: 'Contact | Ghufran Afzal',
+  title: 'Contact — Hire a Shopify Developer',
   description: "Have a Shopify project in mind? Share a few details and I'll get back to you within 24 hours.",
 }));
 
 /* ---- projects listing ---- */
 out('projects.html', page({
   file: 'projects.html', depth: 0, nav: 'projects',
-  title: 'Projects',
+  title: 'Shopify Projects & Case Studies',
   description: 'Selected Shopify projects by Ghufran Afzal: custom themes, store redesigns, performance and conversion work, and integrations.',
   css: ['content'], js: ['filters'],
   main: `  <main id="main">
@@ -338,7 +348,7 @@ projects.forEach((pr, idx) => {
   const list = (arr) => `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
   out(`projects/${pr.slug}.html`, page({
     file: `projects/${pr.slug}.html`, depth: 1, nav: 'projects',
-    title: `${pr.title} — ${pr.category} case`, description: pr.summary,
+    title: `${pr.title} — Shopify ${pr.category} project`, description: pr.summary,
     css: ['content'], js: [],
     main: `  <main id="main">
     <article class="detail">
@@ -388,7 +398,7 @@ projects.forEach((pr, idx) => {
 /* ---- articles listing ---- */
 out('articles.html', page({
   file: 'articles.html', depth: 0, nav: 'articles',
-  title: 'Articles',
+  title: 'Shopify Development Articles & Case Studies',
   description: 'Case studies and practical Shopify articles on theme development, Liquid, performance, and integrations.',
   css: ['content'], js: ['filters'],
   main: `  <main id="main">
@@ -457,7 +467,7 @@ ${a.html}
 
 /* ---- 404 ---- */
 out('404.html', page({
-  file: '404.html', depth: 0, nav: '', title: 'Page not found', description: 'This page could not be found.', noindex: true, css: ['content'],
+  file: '404.html', depth: 0, nav: '', rootOverride: (SITE_URL ? SITE_URL : '') + '/', title: 'Page not found', description: 'This page could not be found.', noindex: true, css: ['content'],
   main: `  <main id="main">
     <section class="page-hero page-hero--tall">
       <div class="container">
@@ -465,20 +475,19 @@ out('404.html', page({
           <span class="pill pill--badge">404</span>
           <h1 class="page-hero__heading h2">This page doesn't exist</h1>
           <p class="page-hero__text">The link may be broken, or the page may have moved.</p>
-          <div class="detail-head__actions detail-head__actions--center"><a class="btn btn--primary" href="/index.html">Back to home</a><a class="btn btn--secondary" href="/projects.html">View projects</a></div>
+          <div class="detail-head__actions detail-head__actions--center"><a class="btn btn--primary" href="${(SITE_URL || '') + '/'}">Back to home</a><a class="btn btn--secondary" href="${(SITE_URL || '') + '/'}projects.html">View projects</a></div>
         </div>
       </div>
     </section>
   </main>`,
 }));
 
-/* ---- sitemap + robots (only when siteUrl is configured) ---- */
+/* ---- sitemap (only when siteUrl is configured) ---- */
 if (SITE_URL) {
   const urls = written.filter((f) => f.endsWith('.html') && f !== '404.html');
   out('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((f) => `  <url><loc>${SITE_URL}/${f === 'index.html' ? '' : f}</loc></url>`).join('\n')}\n</urlset>\n`);
-  out('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 } else {
-  todo.push('content/site.json: set "siteUrl" to generate canonical tags, sitemap.xml and robots.txt');
+  todo.push('content/site.json: set "siteUrl" to generate canonical tags and sitemap.xml');
 }
 if (!(site.socials || []).some((s) => s.url)) todo.push('content/site.json: add social URLs (the footer Social column is hidden until at least one is set)');
 

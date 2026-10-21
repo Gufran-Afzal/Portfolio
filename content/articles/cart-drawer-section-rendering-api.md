@@ -1,5 +1,5 @@
 ---
-title: Case study: a no-reload cart drawer with the Section Rendering API
+title: Case study: a no-reload Shopify cart drawer
 date: 2026-10-08
 category: Case studies
 tags: Cart, JavaScript, Liquid

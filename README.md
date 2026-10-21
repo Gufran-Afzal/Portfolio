@@ -51,3 +51,9 @@ Set `draft: true` in the front matter to hide a post.
 `node build.mjs` prints a release checklist (missing live URLs, covers, socials, siteUrl).
 Also: submit the contact form once on the deployed site and confirm the email
 arrives (the Formspree form must be activated), and run PageSpeed Insights.
+
+## SEO
+See **`SEO_GUIDE.md`** for the full audit, Search Console setup and checklist.
+Base URL is set in `content/site.json` (`siteUrl`). There is intentionally no
+`robots.txt` in this repo: on a GitHub Pages *project* site, crawlers only read
+`robots.txt` at the host root, so a copy here would be ignored.
