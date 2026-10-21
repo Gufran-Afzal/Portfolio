@@ -226,5 +226,140 @@
       "Resolved technical issues affecting product data discovery",
       "Established a more reliable product data setup for ongoing search visibility"
     ]
+  },
+  {
+    "slug": "career-counselors",
+    "title": "Career Counselors",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e3e9f0",
+    "logo": "assets/brands/career-counselors-92.svg",
+    "cover": "assets/img/career-counselors-thumbnail.webp",
+    "liveUrl": "http://careercounselors92.com/",
+    "year": "2026",
+    "summary": "A complete website built from scratch for Career Counselors, combining a tailored design, structured content, and a user-friendly experience to present the organization's services online.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "Career Counselors was a complete website development project that I built from the ground up. Rather than relying on a pre-built website template, I developed a tailored online presence designed around the organization's identity and service offerings, with a focus on clear content presentation, intuitive navigation, and a consistent experience across devices.",
+    "challenge": "The goal was to create a professional, accessible online presence that communicates the organization's services clearly and helps visitors navigate the information they need. The website needed a cohesive visual structure and responsive layouts without depending on an off-the-shelf design.",
+    "solution": "I designed and developed the website from scratch, building its page layouts, styling, and front-end interactions around the project's requirements. I focused on organizing content into a clear hierarchy, maintaining visual consistency throughout the site, and ensuring the interface adapts to different screen sizes.",
+    "deliverables": [
+      "Complete website built from scratch",
+      "Custom website design and layout",
+      "Responsive page templates",
+      "Structured content and navigation",
+      "Custom front-end styling",
+      "Interactive UI elements",
+      "Cross-device layout refinement",
+      "Consistent visual design across pages"
+    ],
+    "results": [
+      "Delivered a complete custom-built website",
+      "Created a tailored online presence for the organization",
+      "Established a consistent design system across website pages",
+      "Provided responsive layouts for different screen sizes",
+      "Built a website structure aligned with the organization's services and content"
+    ]
+  },
+  {
+    "slug": "study-abroad-by-trc",
+    "title": "Study Abroad by TRC",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e3e9f0",
+    "logo": "assets/brands/study-abroad-by-trc.svg",
+    "cover": "assets/img/study-abroad-by-trc-thumbnail.webp",
+    "liveUrl": "http://studyabroadbytrc.com/index.html",
+    "year": "2026",
+    "summary": "A fully custom-built website for an international education consultancy, designed to present study abroad services, guide prospective students, and establish a professional digital presence.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "Study Abroad by TRC is a custom website project I developed from scratch for an international education consultancy. The website was built to communicate the organization's services, organize important information for prospective students, and provide a clear, accessible online experience tailored to the brand.",
+    "challenge": "The website needed to present study abroad services and educational information in a structured, approachable way while establishing trust with prospective students. The challenge was to create a cohesive website experience that made information easy to navigate across different devices.",
+    "solution": "I designed and developed the website from the ground up, creating custom page layouts, front-end styling, and navigation tailored to the project's requirements. I focused on clear content hierarchy, consistent visual presentation, and responsive layouts to make the website accessible across desktop and mobile devices.",
+    "deliverables": [
+      "Complete website development from scratch",
+      "Custom page layouts and styling",
+      "Responsive website design",
+      "Service and information page structure",
+      "Custom navigation and content organization",
+      "Front-end interactions",
+      "Consistent visual styling across pages",
+      "Cross-device layout refinement"
+    ],
+    "results": [
+      "Delivered a fully custom-built website for the consultancy",
+      "Created a structured online presence for study abroad services",
+      "Organized educational information for easier navigation",
+      "Established a consistent visual experience across the website",
+      "Provided responsive layouts for desktop and mobile users"
+    ]
+  },
+  {
+    "slug": "the-royal-consultants",
+    "title": "The Royal Consultants",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e8e2dc",
+    "logo": "assets/brands/the-royal-consultants.svg",
+    "cover": "assets/img/the-royal-consultants-thumbnail.webp",
+    "liveUrl": "https://theroyalconsultants.com/index.html",
+    "year": "2026",
+    "summary": "A fully custom-built consultancy website designed to establish a professional online presence, communicate services clearly, and provide visitors with an intuitive browsing experience.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "The Royal Consultants was a complete website development project that I built from scratch. The goal was to create a professional digital presence tailored to the consultancy, with a cohesive design, clearly structured information, and straightforward navigation to help visitors understand its services.",
+    "challenge": "The website needed a consistent visual identity and a clear content structure to present the consultancy professionally. The experience also needed to remain intuitive across different screen sizes while supporting the organization's service information and business objectives.",
+    "solution": "I developed the website from the ground up, creating custom page layouts, front-end styling, and navigation based on the project's requirements. I focused on content hierarchy, consistent interface elements, and responsive layouts to deliver a cohesive experience across the website.",
+    "deliverables": [
+      "Complete website built from scratch",
+      "Custom website layouts and styling",
+      "Responsive page design",
+      "Structured content and navigation",
+      "Custom front-end development",
+      "Interactive interface elements",
+      "Consistent visual design across pages",
+      "Cross-device layout refinement"
+    ],
+    "results": [
+      "Delivered a complete custom-built consultancy website",
+      "Established a professional online presence for the business",
+      "Created a consistent design experience across website pages",
+      "Organized service information for straightforward navigation",
+      "Implemented responsive layouts for desktop and mobile devices"
+    ]
   }
 ]

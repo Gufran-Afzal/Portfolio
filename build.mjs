@@ -32,7 +32,7 @@ const SITE_URL = (site.siteUrl || '').replace(/\/$/, '');
 const YEAR = new Date().getFullYear();
 
 /* ---------- display order for filter chips (only non-empty ones render) ---------- */
-const PROJECT_CATEGORIES = ['Custom Theme', 'Store Redesign', 'Performance & CRO', 'Integrations'];
+const PROJECT_CATEGORIES = ['Custom Theme', 'Store Redesign', 'Performance & CRO', 'Integrations', 'Custom Web Development'];
 const ARTICLE_CATEGORIES = ['Case studies', 'Liquid & Themes', 'Performance', 'Apps & Integrations'];
 
 /* ---------- helpers ---------- */
