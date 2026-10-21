@@ -1,11 +1,24 @@
 {
   "name": "Ghufran Afzal",
-  "siteUrl": "",
+  "siteUrl": "https://gufran-afzal.github.io/Portfolio",
   "email": "gufranafzal54@gmail.com",
   "socials": [
-    { "label": "LinkedIn",  "url": "" },
-    { "label": "GitHub",    "url": "" },
-    { "label": "Upwork",    "url": "" },
-    { "label": "Instagram", "url": "" }
-  ]
+    {
+      "label": "LinkedIn",
+      "url": ""
+    },
+    {
+      "label": "GitHub",
+      "url": ""
+    },
+    {
+      "label": "Upwork",
+      "url": ""
+    },
+    {
+      "label": "Instagram",
+      "url": ""
+    }
+  ],
+  "ogImage": ""
 }

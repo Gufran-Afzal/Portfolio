@@ -37,12 +37,15 @@ updateGhostState();
 function openMenu() {
   menuOpen = true;
   // move focus into the dialog so keyboard / screen-reader users land in it
-  // (short delay: the overlay is still visibility:hidden on the first frame of its fade-in)
-  setTimeout(function () {
+  // The overlay is visibility:hidden for the first frame(s) of its fade-in, so
+  // retry briefly until the link is actually focusable.
+  var tries = 0;
+  (function focusFirst() {
     if (!menuOpen) return;
     var first = overlay.querySelector('.header_mobile-link');
     if (first) first.focus();
-  }, 60);
+    if (first && document.activeElement !== first && tries++ < 15) setTimeout(focusFirst, 30);
+  })();
   overlay.classList.add('header_mobile-overlay--open');
   toggles.forEach((btn) => {
     btn.classList.add('header_toggle--active');
