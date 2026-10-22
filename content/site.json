@@ -4,21 +4,25 @@
   "email": "gufranafzal54@gmail.com",
   "socials": [
     {
+      "label": "WhatsApp",
+      "url": "https://wa.me/923270160677"
+    },
+    {
       "label": "LinkedIn",
-      "url": ""
+      "url": "https://www.linkedin.com/in/ghufran-afzal-a0283a22a/"
     },
     {
       "label": "GitHub",
-      "url": ""
+      "url": "https://github.com/Gufran-Afzal"
     },
     {
       "label": "Upwork",
-      "url": ""
+      "url": "https://www.upwork.com/freelancers/~011058e8b7dbe98b7b"
     },
     {
       "label": "Instagram",
-      "url": ""
+      "url": "https://www.instagram.com/ghufran__afzal/"
     }
   ],
-  "ogImage": ""
+  "ogImage": "https://gufran-afzal.github.io/Portfolio/assets/img/hero-portrait.webp"
 }

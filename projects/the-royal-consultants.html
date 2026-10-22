@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>The Royal Consultants — Shopify Custom Web Development project</title>
+<meta name="description" content="A fully custom-built consultancy website designed to establish a professional online presence, communicate services clearly, and provide visitors with an intuitive browsing experience.">
+<link rel="canonical" href="https://gufran-afzal.github.io/Portfolio/projects/the-royal-consultants.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Royal Consultants — Shopify Custom Web Development project">
+<meta property="og:description" content="A fully custom-built consultancy website designed to establish a professional online presence, communicate services clearly, and provide visitors with an intuitive browsing experience.">
+<meta property="og:url" content="https://gufran-afzal.github.io/Portfolio/projects/the-royal-consultants.html">
+<meta property="og:image" content="https://gufran-afzal.github.io/Portfolio/https://gufran-afzal.github.io/Portfolio/assets/img/hero-portrait.webp">
+<meta name="twitter:card" content="summary_large_image"><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link" aria-current="page">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link" aria-current="page">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link" aria-current="page">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <main id="main">
+    <article class="detail">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span aria-current="page">The Royal Consultants</span></nav>
+        <header class="detail-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Custom Web Development</span>
+          <h1 class="detail-head__heading" data-animate="fade-up">The Royal Consultants</h1>
+          <p class="detail-head__text" data-animate="fade-up">A fully custom-built consultancy website designed to establish a professional online presence, communicate services clearly, and provide visitors with an intuitive browsing experience.</p>
+          <div class="detail-head__actions" data-animate="fade-up">
+            <a class="btn btn--primary" href="https://theroyalconsultants.com/index.html" target="_blank" rel="noopener noreferrer">Visit live store <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn--secondary" href="../contact.html">Start a similar project</a>
+          </div>
+        </header>
+        <div class="work-media work-media--hero" style="--accent:#e8e2dc"><img class="work-media__cover" src="../assets/img/the-royal-consultants-thumbnail.webp" alt="The Royal Consultants storefront screenshot" loading="eager" decoding="async"></div>
+        <dl class="detail-meta">
+          <div><dt>Client</dt><dd>The Royal Consultants</dd></div>
+          <div><dt>Type</dt><dd>Custom Web Development</dd></div>
+          <div><dt>Platform</dt><dd>Shopify</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+        </dl>
+        <div class="detail-layout">
+          <aside class="detail-aside">
+            <div class="aside-card"><h2>Services</h2><ul><li>Custom website development</li><li>UI/UX design</li><li>Front-end development</li><li>Responsive web design</li><li>Website architecture</li><li>Custom page development</li></ul></div>
+            <div class="aside-card"><h2>Stack</h2><ul class="chips"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></div>
+          </aside>
+          <div class="prose">
+            <section class="prose-block"><h2>Overview</h2><p>The Royal Consultants was a complete website development project that I built from scratch. The goal was to create a professional digital presence tailored to the consultancy, with a cohesive design, clearly structured information, and straightforward navigation to help visitors understand its services.</p></section>
+            <section class="prose-block"><h2>The challenge</h2><p>The website needed a consistent visual identity and a clear content structure to present the consultancy professionally. The experience also needed to remain intuitive across different screen sizes while supporting the organization's service information and business objectives.</p></section>
+            <section class="prose-block"><h2>The solution</h2><p>I developed the website from the ground up, creating custom page layouts, front-end styling, and navigation based on the project's requirements. I focused on content hierarchy, consistent interface elements, and responsive layouts to deliver a cohesive experience across the website.</p></section>
+            <section class="prose-block"><h2>What I delivered</h2><ul><li>Complete website built from scratch</li><li>Custom website layouts and styling</li><li>Responsive page design</li><li>Structured content and navigation</li><li>Custom front-end development</li><li>Interactive interface elements</li><li>Consistent visual design across pages</li><li>Cross-device layout refinement</li></ul></section>
+            <section class="prose-block"><h2>Results</h2><ul><li>Delivered a complete custom-built consultancy website</li><li>Established a professional online presence for the business</li><li>Created a consistent design experience across website pages</li><li>Organized service information for straightforward navigation</li><li>Implemented responsive layouts for desktop and mobile devices</li></ul></section>
+          </div>
+        </div>
+        <section class="related"><h2 class="related__heading">Related reading</h2><div class="post-grid"><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload shopify cart drawer how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload Shopify cart drawer</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+        <nav class="detail-nav" aria-label="More projects">
+          <a href="study-abroad-by-trc.html" class="detail-nav__item"><span>Previous project</span><strong>Study Abroad by TRC</strong></a>
+          <a href="sr-beauty.html" class="detail-nav__item detail-nav__item--next"><span>Next project</span><strong>SR Beauty</strong></a>
+        </nav>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="footer__social-menu">
+            <strong>Social</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="https://wa.me/923270160677" class="footer__menu-link" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li class="footer__menu-item"><a href="https://www.linkedin.com/in/ghufran-afzal-a0283a22a/" class="footer__menu-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li class="footer__menu-item"><a href="https://github.com/Gufran-Afzal" class="footer__menu-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li class="footer__menu-item"><a href="https://www.upwork.com/freelancers/~011058e8b7dbe98b7b" class="footer__menu-link" target="_blank" rel="noopener noreferrer">Upwork</a></li>
+              <li class="footer__menu-item"><a href="https://www.instagram.com/ghufran__afzal/" class="footer__menu-link" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>

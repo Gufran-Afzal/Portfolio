@@ -1,118 +1,167 @@
 [
   {
-    "slug": "patrice",
-    "title": "Patrice Fransez",
+    "slug": "sr-beauty",
+    "title": "SR Beauty",
     "category": "Custom Theme",
     "featured": true,
-    "accent": "#ebe6df",
-    "logo": "assets/brands/patrice.png",
-    "cover": "",
-    "liveUrl": "",
-    "year": "",
-    "summary": "A custom Shopify theme built around the brand's identity, with flexible sections the team can rearrange without a developer.",
+    "accent": "#f0e3e3",
+    "logo": "assets/brands/sr-beauty.svg",
+    "cover": "assets/img/sr-beauty-e-commerce-showcase.webp",
+    "liveUrl": "https://srbeautyshop.be",
+    "year": "2026",
+    "summary": "A fully custom Shopify storefront built from scratch to support a catalogue of 4,000+ products, a dual B2B and B2C shopping experience, and complex business-specific functionality.",
     "services": [
-      "Theme development",
-      "Custom sections",
-      "Responsive design"
+      "Custom Shopify theme development",
+      "Full storefront development",
+      "B2B and B2C e-commerce implementation",
+      "Large catalogue architecture",
+      "Custom functionality development",
+      "Responsive UI/UX design",
+      "Shopify Liquid development",
+      "E-commerce system integration"
     ],
     "stack": [
       "Shopify",
       "Liquid",
       "JavaScript",
-      "CSS"
+      "CSS",
+      "HTML"
     ],
-    "overview": "Patrice Fransez needed a storefront that looked and felt like the brand rather than a re-skinned template. I designed and developed the theme from the ground up, keeping the codebase small and the theme editor approachable for the people running the store day to day.",
-    "challenge": "Off-the-shelf themes forced the catalogue into layouts that did not suit the products or the brand's tone, and every change meant asking a developer.",
-    "solution": "I built a lightweight custom theme with reusable, block-based sections, so the team can compose and reorder pages directly in the theme editor. Typography, spacing and components follow one consistent system across every template.",
+    "overview": "SR Beauty was a complex e-commerce project that required much more than a standard Shopify theme. I built the store from scratch, developing a custom storefront around a catalogue of more than 4,000 products while accommodating the distinct needs of both business customers and individual consumers. The project combined custom theme development, tailored functionality, and a scalable structure designed to support a demanding retail operation.",
+    "challenge": "The main challenge was bringing a large product catalogue, B2B and B2C purchasing requirements, and multiple custom functionalities together in one cohesive storefront. The system needed to handle the complexity of a substantial catalogue while providing a clear, reliable, and responsive shopping experience for different customer types.",
+    "solution": "I developed a custom Shopify theme from the ground up and built the storefront architecture around the project's specific business requirements. I implemented tailored functionality for the B2B and B2C shopping experience, structured the interface to accommodate more than 4,000 products, and customized page templates and reusable components to create a consistent experience throughout the store.",
     "deliverables": [
-      "Custom theme from scratch",
-      "Editor-friendly sections and blocks",
-      "Responsive layouts for every template",
-      "Handover walkthrough for the team"
+      "Complete Shopify store development from scratch",
+      "Fully custom Shopify theme",
+      "Storefront architecture for 4,000+ products",
+      "B2B and B2C shopping system",
+      "Custom business-specific functionalities",
+      "Custom product and collection page templates",
+      "Reusable theme sections and components",
+      "Responsive layouts across the storefront",
+      "Customized navigation and product discovery",
+      "Maintainable, scalable theme code"
     ],
-    "results": []
+    "results": [
+      "Successfully launched a fully custom Shopify storefront built from scratch",
+      "Structured a catalogue of 4,000+ products within a scalable store architecture",
+      "Unified B2B and B2C shopping experiences within one e-commerce platform",
+      "Delivered custom functionality tailored to the business's operational requirements",
+      "Established a consistent, responsive shopping experience across the storefront",
+      "Created a flexible custom theme designed for ongoing maintenance and future growth"
+    ]
   },
   {
     "slug": "susanna-falken",
     "title": "Susanna Falken",
-    "category": "Store Redesign",
+    "category": "Performance & CRO",
     "featured": true,
     "accent": "#e7e3ee",
     "logo": "assets/brands/susanna-falken.svg",
-    "cover": "",
-    "liveUrl": "",
-    "year": "",
-    "summary": "A refined redesign of an existing jewellery store, focused on clearer navigation and a calmer, more premium shopping experience.",
+    "cover": "assets/img/luxury-Jewellery-e‑commerce-store.webp",
+    "liveUrl": "https://susannafalken.com/en",
+    "year": "2025",
+    "summary": "A comprehensive Shopify audit and optimization project focused on improving storefront speed, fixing cart issues, and optimizing the shopping journey with conversion-focused features.",
     "services": [
-      "UI/UX design",
-      "Theme customization",
-      "Responsive design"
-    ],
-    "stack": [
-      "Shopify",
-      "Liquid",
-      "JavaScript",
-      "CSS"
-    ],
-    "overview": "Susanna Falken already had a working jewellery store, but the design no longer matched where the brand was heading. The goal was a considered redesign, not a rebuild from zero: keep what worked, rework what did not.",
-    "challenge": "Navigation and product pages had grown cluttered over time, which made browsing feel heavier than the products deserved.",
-    "solution": "I simplified the information hierarchy, refined the typography and spacing, and reworked the collection and product templates so the imagery leads and the interface gets out of the way.",
-    "deliverables": [
-      "Redesigned collection and product templates",
-      "Simplified navigation",
-      "Typography and spacing system",
-      "Mobile-first QA across devices"
-    ],
-    "results": []
-  },
-  {
-    "slug": "sr-beauty",
-    "title": "SR Beauty",
-    "category": "Performance & CRO",
-    "featured": true,
-    "accent": "#f0e3e3",
-    "logo": "assets/brands/sr-beauty.svg",
-    "cover": "",
-    "liveUrl": "",
-    "year": "",
-    "summary": "Speed and conversion improvements across the storefront, from image delivery to a smoother path from product to checkout.",
-    "services": [
+      "Shopify store audit",
       "Performance optimization",
-      "Conversion-focused UX",
+      "Conversion rate optimization (CRO)",
+      "Cart functionality fixes",
+      "Sticky Add to Cart implementation",
+      "Upsell and cross-sell optimization",
+      "Product page UX improvements",
       "Theme customization"
     ],
     "stack": [
       "Shopify",
       "Liquid",
       "JavaScript",
-      "Lighthouse"
+      "CSS"
     ],
-    "overview": "For the SR Beauty shop the brief was practical: make the store faster and make buying easier. I audited the existing theme, prioritised the changes with the best return, and shipped them in small, testable steps.",
-    "challenge": "Heavy images and unnecessary scripts slowed pages down, and a few friction points on the product page made the path to purchase longer than it needed to be.",
-    "solution": "I optimised image delivery, removed unused code, deferred non-critical scripts, and tightened the product page so price, variants and the add-to-cart action are clear at a glance on mobile.",
+    "overview": "Susanna Falken needed more than visual improvements. I audited the existing Shopify storefront to identify performance bottlenecks, cart issues, and friction points that could interrupt the path to purchase. I then implemented targeted technical fixes and conversion-focused enhancements to make the shopping experience faster, smoother, and better equipped to encourage additional purchases.",
+    "challenge": "Store speed issues and cart-related problems were creating friction in the buying journey and potentially costing sales. The product pages also had opportunities to improve purchase accessibility and product discovery through more effective Add to Cart placement, upselling, and cross-selling.",
+    "solution": "I audited the storefront and addressed performance issues and cart functionality problems affecting the customer journey. I implemented a sticky Add to Cart experience to keep the primary purchase action accessible, refined upsell and cross-sell opportunities to encourage complementary purchases, and resolved additional storefront issues identified during the audit. The work focused on reducing friction and making the store more reliable and conversion-friendly.",
     "deliverables": [
-      "Theme performance audit",
-      "Responsive image delivery",
-      "Script and CSS clean-up",
-      "Product page UX refinements"
+      "Comprehensive Shopify storefront audit",
+      "Store speed and performance optimizations",
+      "Cart functionality fixes",
+      "Sticky Add to Cart implementation",
+      "Upsell and cross-sell enhancements",
+      "Product page conversion improvements",
+      "Customer journey friction-point fixes",
+      "Custom theme adjustments",
+      "Storefront functionality testing"
     ],
-    "results": []
+    "results": [
+      "Identified and addressed storefront issues affecting the shopping experience",
+      "Improved store speed through targeted performance optimizations",
+      "Resolved cart-related issues that could disrupt purchases",
+      "Made the Add to Cart action more accessible with a sticky implementation",
+      "Added upsell and cross-sell opportunities to support complementary purchases",
+      "Created a smoother, more reliable path from product discovery to checkout"
+    ]
   },
   {
-    "slug": "romaan",
-    "title": "ROMAAN",
-    "category": "Custom Theme",
+    "slug": "vapegala",
+    "title": "VAPEGALA",
+    "category": "Store Redesign",
     "featured": true,
-    "accent": "#e1e8e5",
-    "logo": "assets/brands/romaan.svg",
-    "cover": "",
-    "liveUrl": "",
-    "year": "",
-    "summary": "A bespoke fragrance storefront with custom sections and a layout system designed to scale as the catalogue grows.",
+    "accent": "#e8e2dc",
+    "logo": "assets/brands/vapegala.svg",
+    "cover": "assets/img/vapegala-thumbnail.webp",
+    "liveUrl": "https://vapegala.co.uk/",
+    "year": "2026",
+    "summary": "A complete e-commerce storefront redesign focused on creating a cohesive shopping experience, improving page layouts, and establishing a consistent visual identity across the entire store.",
     "services": [
+      "Full storefront redesign",
       "Theme development",
-      "Custom sections",
-      "UI/UX design"
+      "UI/UX design",
+      "Responsive design",
+      "Page template customization"
+    ],
+    "stack": [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "CSS",
+      "HTML"
+    ],
+    "overview": "VapeGala needed a refreshed storefront that delivered a more consistent and intuitive shopping experience. I redesigned the entire store, reworking every page to create a unified visual language, improve content hierarchy, and make product discovery and navigation feel more seamless.",
+    "challenge": "The main challenge was to redesign the complete storefront rather than focusing on individual pages. Every page needed to feel connected, remain easy to navigate, and support a consistent shopping experience across desktop and mobile devices.",
+    "solution": "I carried out a full storefront redesign, updating page layouts, visual styling, content structure, and responsive behavior throughout the store. The redesign brought greater consistency to the customer journey while creating a cleaner, more cohesive interface across the entire shopping experience.",
+    "deliverables": [
+      "Complete storefront redesign",
+      "Redesigned layouts across all pages",
+      "Updated product and collection experiences",
+      "Consistent UI and visual styling",
+      "Responsive storefront layouts",
+      "Customized Shopify theme"
+    ],
+    "results": [ 
+      "Delivered a complete redesign of the entire Shopify storefront", 
+      "Established a consistent visual identity across all website pages", 
+      "Improved page layouts and content hierarchy throughout the store", 
+      "Created a more cohesive product browsing and shopping experience", 
+      "Implemented responsive layouts for desktop and mobile devices", 
+      "Customized the Shopify theme to align with the refreshed storefront design" 
+    ]
+  },
+  {
+    "slug": "patrice",
+    "title": "Patrice Fransez",
+    "category": "Performance & CRO",
+    "featured": true,
+    "accent": "#ebe6df",
+    "logo": "assets/brands/patrice.png",
+    "cover": "assets/img/patrice-fransez-thumbnail.webp",
+    "liveUrl": "https://patricefransez.com/",
+    "year": "2024",
+    "summary": "Targeted Shopify storefront improvements focused on refining the shopping experience, addressing usability issues, and making key customer interactions smoother.",
+    "services": [
+      "Storefront optimization",
+      "Theme customization",
+      "UX improvements",
+      "Conversion-focused adjustments"
     ],
     "stack": [
       "Shopify",
@@ -120,16 +169,21 @@
       "JavaScript",
       "CSS"
     ],
-    "overview": "ROMAAN, a fragrance brand, wanted a storefront with its own character and room to grow. I built a custom theme around a small set of well-designed sections that can be recombined as new collections and campaigns launch.",
-    "challenge": "The brand needed distinctive layouts without the maintenance burden of one-off pages for every launch.",
-    "solution": "I created a modular section library with sensible settings and presets, so new pages can be assembled quickly while staying visually consistent.",
+    "overview": "For Patrice Fransez, I worked on targeted improvements to the existing Shopify storefront, focusing on refining the user experience and addressing areas where small changes could make the shopping journey smoother. The work involved practical theme adjustments tailored to the store's needs.",
+    "challenge": "The goal was to improve the existing storefront without undertaking a full redesign, focusing on specific areas where usability and the overall shopping experience could be refined.",
+    "solution": "I made focused adjustments to the Shopify theme to improve the storefront experience and refine key interface elements. Rather than rebuilding existing functionality, I concentrated on practical improvements that fit the current design and business requirements.",
     "deliverables": [
-      "Custom theme",
-      "Reusable section library",
-      "Responsive templates",
-      "Developer-friendly, documented code"
+      "Targeted Shopify theme adjustments",
+      "Storefront usability refinements",
+      "User experience improvements",
+      "Conversion-focused interface updates"
     ],
-    "results": []
+    "results": [
+      "Refined the existing storefront without requiring a complete redesign",
+      "Addressed selected usability and shopping experience improvements",
+      "Delivered focused theme customizations aligned with the brand",
+      "Improved key interface details while retaining the existing storefront structure"
+    ]
   },
   {
     "slug": "risen",
@@ -138,30 +192,174 @@
     "featured": false,
     "accent": "#e3e6ee",
     "logo": "assets/brands/risen.svg",
-    "cover": "",
-    "liveUrl": "",
-    "year": "",
-    "summary": "Connecting a fragrance storefront with the tools the business relies on, while keeping the shopping experience fast.",
+    "cover": "assets/img/risen-fragrance-commerce-showcase.webp",
+    "liveUrl": "https://risenfragrance.com/",
+    "year": "2025",
+    "summary": "Product data integration and troubleshooting to address missing product visibility in Google Search Console caused by market-related configuration issues.",
     "services": [
-      "Integrations",
-      "Theme customization",
-      "Ongoing support"
+      "Product data integration",
+      "Google Search Console troubleshooting",
+      "Shopify market configuration",
+      "Product visibility debugging",
+      "Storefront data validation"
     ],
     "stack": [
       "Shopify",
       "Liquid",
       "JavaScript",
-      "Shopify APIs"
+      "Shopify Markets",
+      "Google Search Console"
     ],
-    "overview": "Risen Fragrances needed its store to work smoothly with the rest of its toolset. I handled the integration work and the front-end changes needed to surface it cleanly to customers.",
-    "challenge": "Third-party tools can easily slow a storefront down or leave the experience feeling stitched together.",
-    "solution": "I integrated the required services with care for performance, loading scripts only where they are needed and keeping the interface consistent with the rest of the theme.",
+    "overview": "Risen Fragrances had product data that was not appearing as expected in Google Search Console due to market-related configuration issues. I investigated the problem and worked on integrating the product data correctly so the storefront could provide the relevant information for search engine discovery.",
+    "challenge": "Market-related configuration issues were affecting product data visibility in Google Search Console. The challenge was to identify the source of the problem and ensure product information was correctly exposed for search engine processing.",
+    "solution": "I investigated the product data visibility issue, addressed the relevant market-related configuration, and integrated the product data to improve consistency and availability for search engine discovery. I focused on ensuring the storefront exposed the appropriate product information for Google's crawling and indexing processes.",
     "deliverables": [
-      "Third-party integrations",
-      "Front-end integration work",
-      "Performance-conscious script loading",
-      "Post-launch support"
+      "Product data integration",
+      "Investigation of missing product data in Google Search Console",
+      "Market-related configuration troubleshooting",
+      "Product information validation",
+      "Search visibility issue resolution"
     ],
-    "results": []
+    "results": [
+      "Addressed product data visibility issues associated with market configuration",
+      "Improved the availability and consistency of product information for search engine processing",
+      "Resolved technical issues affecting product data discovery",
+      "Established a more reliable product data setup for ongoing search visibility"
+    ]
+  },
+  {
+    "slug": "career-counselors",
+    "title": "Career Counselors",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e3e9f0",
+    "logo": "assets/brands/career-counselors-92.svg",
+    "cover": "assets/img/career-counselors-thumbnail.webp",
+    "liveUrl": "http://careercounselors92.com/",
+    "year": "2026",
+    "summary": "A complete website built from scratch for Career Counselors, combining a tailored design, structured content, and a user-friendly experience to present the organization's services online.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "Career Counselors was a complete website development project that I built from the ground up. Rather than relying on a pre-built website template, I developed a tailored online presence designed around the organization's identity and service offerings, with a focus on clear content presentation, intuitive navigation, and a consistent experience across devices.",
+    "challenge": "The goal was to create a professional, accessible online presence that communicates the organization's services clearly and helps visitors navigate the information they need. The website needed a cohesive visual structure and responsive layouts without depending on an off-the-shelf design.",
+    "solution": "I designed and developed the website from scratch, building its page layouts, styling, and front-end interactions around the project's requirements. I focused on organizing content into a clear hierarchy, maintaining visual consistency throughout the site, and ensuring the interface adapts to different screen sizes.",
+    "deliverables": [
+      "Complete website built from scratch",
+      "Custom website design and layout",
+      "Responsive page templates",
+      "Structured content and navigation",
+      "Custom front-end styling",
+      "Interactive UI elements",
+      "Cross-device layout refinement",
+      "Consistent visual design across pages"
+    ],
+    "results": [
+      "Delivered a complete custom-built website",
+      "Created a tailored online presence for the organization",
+      "Established a consistent design system across website pages",
+      "Provided responsive layouts for different screen sizes",
+      "Built a website structure aligned with the organization's services and content"
+    ]
+  },
+  {
+    "slug": "study-abroad-by-trc",
+    "title": "Study Abroad by TRC",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e3e9f0",
+    "logo": "assets/brands/study-abroad-by-trc.svg",
+    "cover": "assets/img/study-abroad-by-trc-thumbnail.webp",
+    "liveUrl": "http://studyabroadbytrc.com/index.html",
+    "year": "2026",
+    "summary": "A fully custom-built website for an international education consultancy, designed to present study abroad services, guide prospective students, and establish a professional digital presence.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "Study Abroad by TRC is a custom website project I developed from scratch for an international education consultancy. The website was built to communicate the organization's services, organize important information for prospective students, and provide a clear, accessible online experience tailored to the brand.",
+    "challenge": "The website needed to present study abroad services and educational information in a structured, approachable way while establishing trust with prospective students. The challenge was to create a cohesive website experience that made information easy to navigate across different devices.",
+    "solution": "I designed and developed the website from the ground up, creating custom page layouts, front-end styling, and navigation tailored to the project's requirements. I focused on clear content hierarchy, consistent visual presentation, and responsive layouts to make the website accessible across desktop and mobile devices.",
+    "deliverables": [
+      "Complete website development from scratch",
+      "Custom page layouts and styling",
+      "Responsive website design",
+      "Service and information page structure",
+      "Custom navigation and content organization",
+      "Front-end interactions",
+      "Consistent visual styling across pages",
+      "Cross-device layout refinement"
+    ],
+    "results": [
+      "Delivered a fully custom-built website for the consultancy",
+      "Created a structured online presence for study abroad services",
+      "Organized educational information for easier navigation",
+      "Established a consistent visual experience across the website",
+      "Provided responsive layouts for desktop and mobile users"
+    ]
+  },
+  {
+    "slug": "the-royal-consultants",
+    "title": "The Royal Consultants",
+    "category": "Custom Web Development",
+    "featured": false,
+    "accent": "#e8e2dc",
+    "logo": "assets/brands/the-royal-consultants.svg",
+    "cover": "assets/img/the-royal-consultants-thumbnail.webp",
+    "liveUrl": "https://theroyalconsultants.com/index.html",
+    "year": "2026",
+    "summary": "A fully custom-built consultancy website designed to establish a professional online presence, communicate services clearly, and provide visitors with an intuitive browsing experience.",
+    "services": [
+      "Custom website development",
+      "UI/UX design",
+      "Front-end development",
+      "Responsive web design",
+      "Website architecture",
+      "Custom page development"
+    ],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "overview": "The Royal Consultants was a complete website development project that I built from scratch. The goal was to create a professional digital presence tailored to the consultancy, with a cohesive design, clearly structured information, and straightforward navigation to help visitors understand its services.",
+    "challenge": "The website needed a consistent visual identity and a clear content structure to present the consultancy professionally. The experience also needed to remain intuitive across different screen sizes while supporting the organization's service information and business objectives.",
+    "solution": "I developed the website from the ground up, creating custom page layouts, front-end styling, and navigation based on the project's requirements. I focused on content hierarchy, consistent interface elements, and responsive layouts to deliver a cohesive experience across the website.",
+    "deliverables": [
+      "Complete website built from scratch",
+      "Custom website layouts and styling",
+      "Responsive page design",
+      "Structured content and navigation",
+      "Custom front-end development",
+      "Interactive interface elements",
+      "Consistent visual design across pages",
+      "Cross-device layout refinement"
+    ],
+    "results": [
+      "Delivered a complete custom-built consultancy website",
+      "Established a professional online presence for the business",
+      "Created a consistent design experience across website pages",
+      "Organized service information for straightforward navigation",
+      "Implemented responsive layouts for desktop and mobile devices"
+    ]
   }
 ]
