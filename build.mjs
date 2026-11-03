@@ -363,7 +363,22 @@ out('projects.html', page({
 projects.forEach((pr, idx) => {
   const prev = projects[(idx - 1 + projects.length) % projects.length];
   const next = projects[(idx + 1) % projects.length];
-  const related = articles.filter((a) => a.tags.some((t) => pr.stack.includes(t)) || a.project === pr.slug).slice(0, 2);
+  // Avoid recommending the same generic platform/language articles on every project.
+  // Explicit project links take priority; otherwise match only specific stack tags.
+  const genericStackTags = new Set(['shopify', 'liquid', 'javascript', 'html', 'css']);
+  const related = articles
+    .map((a) => {
+      const explicitMatch = a.project === pr.slug;
+      const specificMatches = a.tags.filter((tag) =>
+        !genericStackTags.has(tag.toLowerCase()) &&
+        pr.stack.some((item) => item.toLowerCase() === tag.toLowerCase())
+      ).length;
+      return { article: a, score: explicitMatch ? 100 : specificMatches };
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score || b.article.date.localeCompare(a.article.date))
+    .slice(0, 2)
+    .map((item) => item.article);
   if (!pr.liveUrl) todo.push(`projects/${pr.slug}: add liveUrl (button is hidden until set)`);
   if (!pr.cover) todo.push(`projects/${pr.slug}: add a real cover screenshot (currently showing the logo placeholder)`);
   if (!pr.results.length) todo.push(`projects/${pr.slug}: add measurable results (section is hidden until set)`);
