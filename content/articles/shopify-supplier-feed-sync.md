@@ -2,6 +2,7 @@
 title: Building a reliable Shopify supplier feed integration
 date: 2026-11-03
 category: Case studies
+project: sr-beauty
 tags: Shopify, Python, Automation, Inventory, Integration
 excerpt: How I built and deployed an automated supplier integration for Shopify, with separate product and inventory workers, feed safeguards, and scheduled VPS services.
 ---
