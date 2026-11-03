@@ -400,3 +400,15 @@
   .work-card:hover, .post-card:hover { transform: none; }
   .is-entering { animation: none; }
 }
+
+
+/* ---------- article diagrams ---------- */
+.article-figure { margin: 28px 0 34px; }
+.prose .article-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  background: #f4f6f8;
+}
