@@ -114,7 +114,7 @@ function inline(raw) {
   const codes = [];
   let s = raw.replace(/`([^`]+)`/g, (m, c) => { codes.push(c); return `\u0000${codes.length - 1}\u0000`; });
   s = esc(s);
-  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (m, alt, src) => `<figure class="article-figure"><img class="article-diagram" src="${src}" alt="${alt}" loading="lazy" decoding="async"></figure>`);\n  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>');
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, t, u) => {
     const ext = /^https?:/.test(u);
