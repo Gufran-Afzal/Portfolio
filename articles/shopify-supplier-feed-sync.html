@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- @seo --><title>Building a reliable Shopify supplier feed integration</title>
+<meta name="description" content="How I built and deployed an automated supplier integration for Shopify, with separate product and inventory workers, feed safeguards, and scheduled VPS services.">
+<link rel="canonical" href="https://gufran-afzal.github.io/Portfolio/articles/shopify-supplier-feed-sync.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a reliable Shopify supplier feed integration">
+<meta property="og:description" content="How I built and deployed an automated supplier integration for Shopify, with separate product and inventory workers, feed safeguards, and scheduled VPS services.">
+<meta property="og:url" content="https://gufran-afzal.github.io/Portfolio/articles/shopify-supplier-feed-sync.html">
+<meta property="og:image" content="https://gufran-afzal.github.io/Portfolio/https://gufran-afzal.github.io/Portfolio/assets/img/hero-portrait.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Building a reliable Shopify supplier feed integration","description":"How I built and deployed an automated supplier integration for Shopify, with separate product and inventory workers, feed safeguards, and scheduled VPS services.","datePublished":"2026-11-03","author":{"@type":"Person","name":"Ghufran Afzal"},"mainEntityOfPage":"https://gufran-afzal.github.io/Portfolio/articles/shopify-supplier-feed-sync.html"}</script><!-- @/seo -->
+<!-- @head --><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/svg+xml" href="../assets/svg/g-icon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F7F8">
+<script>document.documentElement.classList.add('js')</script><!-- @/head -->
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+  <!-- @header --><!-- ============ 1) PRIMARY HEADER (normal flow) ============ -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="header" id="mainHeader">
+    <div class="container">
+      <div class="header_wrapper">
+        <a href="../" class="header_logo" aria-label="Ghufran Afzal — home">
+          <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+        </a>
+        <nav class="header_nav" aria-label="Primary">
+          <ul class="header_nav-list">
+          <li><a href="../" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2) GHOST STICKY HEADER (fixed, hidden until scrolled) ============ -->
+  <header class="header-ghost" id="ghostHeader" aria-hidden="true" inert>
+    <div class="header_wrapper">
+      <a href="../" class="header_logo" aria-label="Ghufran Afzal — home">
+        <img class="header_logo-icon" src="../assets/svg/ghufran-afzal-logo.svg" alt="" width="120" height="24">
+      </a>
+      <nav class="header_nav" aria-label="Primary (sticky)">
+        <ul class="header_nav-list">
+          <li><a href="../" class="header_nav-link">Home</a></li>
+          <li><a href="../about-us.html" class="header_nav-link">About</a></li>
+          <li><a href="../projects.html" class="header_nav-link">Projects</a></li>
+          <li><a href="../articles.html" class="header_nav-link" aria-current="page">Articles</a></li>
+          <li><a href="../contact.html" class="header_nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="../contact.html" class="header_cta">Let's talk <svg class="header_cta-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <button class="header_toggle" data-menu-toggle aria-label="Toggle menu" aria-expanded="false" aria-controls="headerMobileOverlay">
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+          <span class="header_toggle-bar"></span>
+        </button>
+    </div>
+  </header>
+
+  <!-- ============ SHARED MOBILE POPUP ============ -->
+  <div class="header_mobile-overlay" id="headerMobileOverlay">
+    <div class="header_mobile-panel" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+      <ul class="header_mobile-list">
+        <li class="header_mobile-item"><a href="../" class="header_mobile-link">Home</a></li>
+        <li class="header_mobile-item"><a href="../about-us.html" class="header_mobile-link">About</a></li>
+        <li class="header_mobile-item"><a href="../projects.html" class="header_mobile-link">Projects</a></li>
+        <li class="header_mobile-item"><a href="../articles.html" class="header_mobile-link" aria-current="page">Articles</a></li>
+        <li class="header_mobile-item"><a href="../contact.html" class="header_mobile-link">Contact</a></li>
+      </ul>
+      <div class="header_mobile-footer">
+        <a href="../contact.html" class="header_mobile-cta">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div><!-- @/header -->
+  <div class="read-progress" data-read-progress aria-hidden="true"></div>
+  <main id="main">
+    <article class="article">
+      <div class="container container--narrow">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../articles.html">Articles</a><span aria-hidden="true">/</span><span aria-current="page">Case studies</span></nav>
+        <header class="article-head" data-animate-group data-animate-threshold="0.2">
+          <span class="pill pill--badge" data-animate="fade-up">Case studies</span>
+          <h1 class="article-head__heading" data-animate="fade-up">Building a reliable Shopify supplier feed integration</h1>
+          <p class="article-head__text" data-animate="fade-up">How I built and deployed an automated supplier integration for Shopify, with separate product and inventory workers, feed safeguards, and scheduled VPS services.</p>
+          <p class="article-head__meta" data-animate="fade-up"><span>By Ghufran Afzal</span><span aria-hidden="true">·</span><time datetime="2026-11-03">Nov 3, 2026</time><span aria-hidden="true">·</span><span>6 min read</span></p>
+        </header>
+        <nav class="toc" aria-label="On this page"><strong>On this page</strong><ol><li><a href="#the-requirements">The requirements</a></li><li><a href="#system-architecture">System architecture</a></li><li><a href="#product-synchronization">Product synchronization</a></li><li><a href="#inventory-synchronization">Inventory synchronization</a></li><li><a href="#why-the-workers-use-different-schedules">Why the workers use different schedules</a></li><li><a href="#safeguards-for-production-data">Safeguards for production data</a></li><li><a href="#deploying-the-workers-with-systemd">Deploying the workers with systemd</a></li><li><a href="#monitoring-and-troubleshooting">Monitoring and troubleshooting</a></li><li><a href="#production-verification">Production verification</a></li><li><a href="#what-this-project-demonstrates">What this project demonstrates</a></li></ol></nav>
+        <div class="prose prose--article">
+<p>Keeping a Shopify catalogue aligned with an external supplier is not just a matter of importing an XML file. A production integration needs to identify products correctly, handle changing stock levels, protect the live store from abnormal feed data, and keep running without someone manually starting scripts.</p>
+<p>For this project, I built and deployed a Python-based synchronization system that reads separate supplier XML feeds for product data and inventory, then updates a live Shopify store through the Shopify Admin API.</p>
+<p>The objective was to turn a manual or developer-dependent process into an automated service that could run reliably in the background.</p>
+<h2 id="the-requirements">The requirements</h2>
+<p>The supplier provided two separate XML feeds: one containing product information and another containing stock quantities. The integration needed to:</p>
+<ul><li>Import new products and update existing Shopify products.</li><li>Match supplier records to Shopify products using SKU values.</li><li>Synchronize stock quantities against the correct Shopify inventory location.</li><li>Run product and inventory synchronization independently.</li><li>Avoid unnecessary updates when product data had not changed.</li><li>Detect suspicious or incomplete feed data before it could affect the live catalogue.</li><li>Keep execution history and progress available for troubleshooting.</li><li>Run automatically after deployment and server restarts.</li></ul>
+<p>The main engineering challenge was making the complete workflow safe to repeat, not simply making one successful import.</p>
+<h2 id="system-architecture">System architecture</h2>
+<p>I separated the integration into two independent Python workers. Both run on an Ubuntu VPS and are managed by systemd, while communicating with Shopify through its Admin API.</p>
+<p><figure class="article-figure"><img class="article-diagram" src="../assets/img/articles/shopify-supplier-sync-architecture.svg" alt="Architecture diagram showing supplier product and stock XML feeds entering separate Python workers on an Ubuntu VPS, managed by systemd, and connecting to the Shopify Admin API." loading="lazy" decoding="async"></figure></p>
+<p>The product worker is responsible for catalogue data. The inventory worker is responsible for stock quantities. Each has its own schedule, checkpoint, and execution logs.</p>
+<p>This separation keeps frequent stock checks from triggering unnecessary product imports and makes each process easier to inspect independently.</p>
+<h2 id="product-synchronization">Product synchronization</h2>
+<p>The product worker downloads and parses the supplier product feed, then compares the incoming records with the existing Shopify catalogue.</p>
+<p>Products are matched using their SKU values. The import process distinguishes between new products, products that need updating, and products that are already up to date.</p>
+<p>Where changes are required, the worker sends updates to Shopify in batches rather than treating every product as an isolated request.</p>
+<p>The initial production import processed 3,473 feed items. It identified 39 new products and 2,286 existing products requiring updates, while 1,148 products were unchanged. All 2,325 create/update operations completed successfully.</p>
+<p>The workflow also includes publication handling and verification, so products that need to be available on the Online Store publication can be checked as part of the process.</p>
+<h2 id="inventory-synchronization">Inventory synchronization</h2>
+<p>Inventory is handled by a separate worker because stock availability can change more frequently than product descriptions or other catalogue information.</p>
+<p>The inventory worker reads the supplier stock feed, matches records to Shopify using the SKU, and synchronizes the supplier's available quantity with the configured Shopify location.</p>
+<p>The process uses the supplier's current quantity as the source of truth. It does not repeatedly add or subtract stock based on the previous synchronization run. This makes repeated runs predictable and helps prevent quantity drift.</p>
+<p>The initial inventory run successfully processed all 3,473 readable SKU records, with zero failed updates.</p>
+<h2 id="why-the-workers-use-different-schedules">Why the workers use different schedules</h2>
+<p>The production schedule is intentionally different for each process:</p>
+<ul><li><strong>Product synchronization:</strong> every 6 hours.</li><li><strong>Inventory synchronization:</strong> every 45 minutes.</li></ul>
+<p>Product information generally does not need to be checked as frequently as stock availability. A six-hour product interval keeps the catalogue refreshed without running the full import too often.</p>
+<p>For inventory, I chose 45 minutes rather than 30. A shorter interval is not automatically better: it also means more frequent feed downloads and API activity. Forty-five minutes provides regular stock checks while keeping unnecessary workload under control.</p>
+<p>Both intervals are configured independently, so they can be adjusted if the supplier's update frequency or the store's requirements change.</p>
+<h2 id="safeguards-for-production-data">Safeguards for production data</h2>
+<p>A synchronization system connected to a live store needs protection against unexpected supplier data.</p>
+<p>I added validation safeguards to detect suspicious changes before the workers proceed. These include thresholds for unexpected feed shrinkage, unknown stock records, and unusually large zero-stock changes, along with a minimum item-count check.</p>
+<p>The purpose is to avoid treating a partial or abnormal supplier feed as a trustworthy representation of the full catalogue.</p>
+<p>The system also keeps configuration and credentials outside the source code. Production environment values are stored in a protected environment file and are not committed to the repository.</p>
+<h2 id="deploying-the-workers-with-systemd">Deploying the workers with systemd</h2>
+<p>After testing the scripts, I deployed them to an Ubuntu VPS and configured two independent systemd services:</p>
+<ul><li><code>shopify-products-scheduler.service</code></li><li><code>shopify-inventory-scheduler.service</code></li></ul>
+<p>Systemd keeps the schedulers running in the background, starts them automatically when the server boots, and provides a standard way to inspect their status and logs.</p>
+<p>This means the synchronization does not depend on an open terminal session or a developer keeping a process alive manually.</p>
+<p>The VPS is the single source of automatic production scheduling. GitHub is used for source-code management, while the production workers execute on the server. This avoids accidentally running duplicate scheduled jobs from multiple platforms.</p>
+<h2 id="monitoring-and-troubleshooting">Monitoring and troubleshooting</h2>
+<p>Each worker maintains its own checkpoint and execution logs. I also added a status script that summarizes service health, the latest successful runs, the publication queue, and recent problems.</p>
+<p>For example, the product scheduler's recent service output can be inspected with:</p>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">bash</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>sudo journalctl -u shopify-products-scheduler -n 30 --no-pager</code></pre></div>
+<p>The inventory scheduler can be inspected separately:</p>
+<div class="code-block" data-code-block><div class="code-block__bar"><span class="code-block__lang">bash</span><button type="button" class="code-block__copy" data-copy>Copy</button></div><pre><code>sudo journalctl -u shopify-inventory-scheduler -n 30 --no-pager</code></pre></div>
+<p>This separation makes it easier to identify whether an issue belongs to product import, inventory synchronization, or the scheduler itself.</p>
+<h2 id="production-verification">Production verification</h2>
+<p>After deployment, I verified both the initial manual production runs and the first automatic runs triggered by the services.</p>
+<p>The initial production checks confirmed:</p>
+<ul><li>3,473 supplier product-feed items processed.</li><li>2,325 product create/update operations completed successfully.</li><li>3,473 inventory SKU records processed successfully.</li><li>Zero failed operations in the initial product and inventory runs.</li></ul>
+<p>The first automatic product run then completed with 2,296 successful updates and 1,177 unchanged products. The first automatic inventory run also completed successfully.</p>
+<p>Both systemd services were active, the publication queue was empty after the product run, and the final health check reported the deployment as healthy.</p>
+<h2 id="what-this-project-demonstrates">What this project demonstrates</h2>
+<p>The most important part of this project was not the XML parsing or the API requests on their own. It was designing the complete synchronization lifecycle: separating responsibilities, matching records reliably, validating incoming data, processing changes in batches, saving progress, and operating the workers as managed production services.</p>
+<p>The result is a supplier integration that runs automatically, keeps product and inventory workflows independent, and provides checkpoints and logs for ongoing monitoring.</p>
+<p><strong>The goal was to keep the Shopify catalogue and inventory aligned with supplier data without requiring someone to run the synchronization manually.</strong></p>
+        </div>
+        <ul class="chips chips--tags" aria-label="Tags"><li>Shopify</li><li>Python</li><li>Automation</li><li>Inventory</li><li>Integration</li></ul>
+        <aside class="author-box">
+          <img src="../assets/img/hero-portrait.webp" alt="" width="64" height="64" loading="lazy">
+          <div><strong>Ghufran Afzal</strong><p>Shopify developer building fast, conversion-focused storefronts. <a href="../contact.html">Work with me</a>.</p></div>
+        </aside>
+      </div>
+      <div class="container">
+        <section class="related"><h2 class="related__heading">Keep reading</h2><div class="post-grid"><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: a no-reload shopify cart drawer how i build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in javascript. cart javascript liquid case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/cart-drawer-section-rendering-api.html">Case study: a no-reload Shopify cart drawer</a></h3>
+          <p class="post-card__text">How I build an add-to-cart flow that updates the cart drawer instantly, without reloading the page or re-implementing cart markup in JavaScript.</p>
+          <div class="post-card__foot"><time datetime="2026-10-08">Oct 8, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article><article class="post-card post-card--case" data-item data-category="case-studies" data-search="case study: auditing a slow shopify theme, step by step the repeatable order i follow when a store feels slow, so the biggest wins come first and every change is measured. performance audit theme case studies">
+          <div class="post-card__top"><span class="pill pill--light">Case studies</span><span class="post-card__read">2 min read</span></div>
+          <h3 class="post-card__title"><a class="post-card__link" href="../articles/auditing-a-slow-shopify-theme.html">Case study: auditing a slow Shopify theme, step by step</a></h3>
+          <p class="post-card__text">The repeatable order I follow when a store feels slow, so the biggest wins come first and every change is measured.</p>
+          <div class="post-card__foot"><time datetime="2026-09-24">Sep 24, 2026</time><span class="post-card__go">Read <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </article></div></section>
+      </div>
+    </article>
+    <section class="cta-band-section">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2 class="cta-band__heading">Have a Shopify project in mind?</h2>
+            <p class="cta-band__text">Share a few details and I'll get back to you with a clear direction.</p>
+          </div>
+          <a href="../contact.html" class="btn btn--light">Let's talk <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer --><footer class="footer">
+    <div class="container">
+      <div class="footer__top-wrapper">
+        <div class="footer__left">
+          <div class="footer__logo">
+            <img src="../assets/svg/ghufran-afzal-logo.svg" alt="Ghufran Afzal" width="150" height="32" loading="lazy">
+          </div>
+          <div class="footer__text">
+            <p>Building clean, modern, and conversion-focused digital experiences that help brands stand out and grow.</p>
+          </div>
+        </div>
+        <div class="footer__right">
+          <nav class="footer__pages-menu" aria-label="Footer">
+            <strong>Pages</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="../" class="footer__menu-link">Home</a></li>
+              <li class="footer__menu-item"><a href="../about-us.html" class="footer__menu-link">About</a></li>
+              <li class="footer__menu-item"><a href="../#services" class="footer__menu-link">Services</a></li>
+              <li class="footer__menu-item"><a href="../projects.html" class="footer__menu-link">Projects</a></li>
+              <li class="footer__menu-item"><a href="../articles.html" class="footer__menu-link">Articles</a></li>
+              <li class="footer__menu-item"><a href="../contact.html" class="footer__menu-link">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="footer__social-menu">
+            <strong>Social</strong>
+            <ul class="footer__menu">
+              <li class="footer__menu-item"><a href="https://wa.me/923270160677" class="footer__menu-link" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+              <li class="footer__menu-item"><a href="https://www.linkedin.com/in/ghufran-afzal-a0283a22a/" class="footer__menu-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li class="footer__menu-item"><a href="https://github.com/Gufran-Afzal" class="footer__menu-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              <li class="footer__menu-item"><a href="https://www.upwork.com/freelancers/~011058e8b7dbe98b7b" class="footer__menu-link" target="_blank" rel="noopener noreferrer">Upwork</a></li>
+              <li class="footer__menu-item"><a href="https://www.instagram.com/ghufran__afzal/" class="footer__menu-link" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom-wrapper">
+        <p class="footer__copyright">© 2026 Ghufran Afzal. All rights reserved.</p>
+        <p class="footer__credit">Designed &amp; built by Ghufran Afzal.</p>
+      </div>
+    </div>
+  </footer><!-- @/footer -->
+
+<script src="../js/main.js"></script>
+<script src="../js/article.js"></script>
+</body>
+</html>

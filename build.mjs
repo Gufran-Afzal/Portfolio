@@ -166,18 +166,38 @@ function markdown(src) {
   }
   return { html: out.join('\n'), toc };
 }
-function frontMatter(raw) {
-  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
-  if (!m) throw new Error('Missing front matter');
+function frontMatter(raw, filename = 'unknown article') {
+  // Support Windows CRLF and Unix LF line endings.
+  const normalized = raw
+    .replace(/^\uFEFF/, '')
+    .replace(/\r\n?/g, '\n');
+
+  const m = normalized.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+
+  if (!m) {
+    throw new Error(
+      `Missing or invalid YAML front matter in "${filename}".`
+    );
+  }
+
   const meta = {};
-  m[1].split('\n').forEach((l) => { const k = l.indexOf(':'); if (k > 0) meta[l.slice(0, k).trim()] = l.slice(k + 1).trim(); });
+
+  m[1].split('\n').forEach((line) => {
+    const k = line.indexOf(':');
+
+    if (k > 0) {
+      meta[line.slice(0, k).trim()] =
+        line.slice(k + 1).trim();
+    }
+  });
+
   return { meta, body: m[2] };
 }
 
 /* ---------- load content ---------- */
 const projects = JSON.parse(read('content/projects.json'));
 const articles = fs.readdirSync(p('content/articles')).filter((f) => f.endsWith('.md')).map((f) => {
-  const { meta, body } = frontMatter(read(`content/articles/${f}`));
+  const { meta, body } = frontMatter(read(`content/articles/${f}`), f);
   const { html, toc } = markdown(body);
   const words = body.split(/\s+/).length;
   return {
@@ -431,8 +451,10 @@ out('articles.html', page({
 articles.forEach((a) => {
   const related = articles.filter((x) => x.slug !== a.slug)
     .sort((x, y) => (y.category === a.category) - (x.category === a.category)).slice(0, 2);
-  const ld = { '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.excerpt, datePublished: a.date,
-    author: { '@type': 'Person', name: site.name }, ...(SITE_URL ? { mainEntityOfPage: `${SITE_URL}/articles/${a.slug}.html` } : {}) };
+  const ld = {
+    '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.excerpt, datePublished: a.date,
+    author: { '@type': 'Person', name: site.name }, ...(SITE_URL ? { mainEntityOfPage: `${SITE_URL}/articles/${a.slug}.html` } : {})
+  };
   out(`articles/${a.slug}.html`, page({
     file: `articles/${a.slug}.html`, depth: 1, nav: 'articles', type: 'article',
     title: a.title, description: a.excerpt,
